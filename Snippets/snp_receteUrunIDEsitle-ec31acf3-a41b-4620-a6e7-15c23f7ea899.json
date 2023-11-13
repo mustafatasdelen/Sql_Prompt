@@ -1,0 +1,6 @@
+{
+  "id": "ec31acf3-a41b-4620-a6e7-15c23f7ea899",
+  "prefix": "snp_receteUrunIDEsitle",
+  "description": "",
+  "body": "\t  \n\t\t\t\t\t\t  Update RD \n\t\t\t\t\t\t  Set RD.UrunID = KK.UrunID , RD.IsITUpdate = RD.IsITUpdate\n\t\t\t\t\t\t  From  IT01_ReceteD RD \n\t\t\t\t\t\t  Inner Join IT06_AsortiM AM On AM.ReceteID = RD.ReceteID\n\t\t\t\t\t\t  Inner Join IT06_StokKarti SK On SK.UrunID = RD.UrunID\n                          Cross Apply (SELECT K.UrunID FROM  IT06_StokKarti K Where K.IsOtoStokKarti = 1 And K.UrunTID = RD.urunTID ) kk\n\t\t\t\t\t\t  Where SK.UrunTID <> RD.UrunTID"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "fcab2a58-9e70-46a9-bd10-4643bd760429",
+  "prefix": "snp_HashOlustur_Stuff",
+  "description": "",
+  "body": "OUter Apply(Select STUFF((\n\t\t\tSelect\tConcat(';', LD.BarTipID,'-', LD.LotID, '-', Floor(LD.Birim_Mt))\n\t\t\tFrom\tIT06_LotD LD\n\t\t\tWhere\tLD.LotID = LM.LotID\n\t\t\tOrder By  LD.BarTipID, LD.LotID\n\t\t\tFOR XML PATH('') ),1,1,'') As HashCode) Detay"
+}

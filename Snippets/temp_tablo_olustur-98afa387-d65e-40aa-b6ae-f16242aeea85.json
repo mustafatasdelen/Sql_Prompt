@@ -1,0 +1,6 @@
+{
+  "id": "98afa387-d65e-40aa-b6ae-f16242aeea85",
+  "prefix": "temp_tablo_olustur",
+  "description": "",
+  "body": "If object_id('tempdb..#TabloGibiTablo') Is Not Null Drop Table #TabloGibiTablo\nCreate Table #TabloGibiTablo ($CURSOR$)"
+}

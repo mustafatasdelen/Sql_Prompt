@@ -1,0 +1,6 @@
+{
+  "id": "d37b0b66-132a-4934-b090-c6418aefa134",
+  "prefix": "snp_OutputInserted",
+  "description": "snp_OutputInserted",
+  "body": "DECLARE @AmbarID TABLE(AmbarID INT, SAPAmbarID INT)\r\nINSERT dbo.IT01_SAP_Ambarlar(Lgobe,LeoAmbarID)\r\nOUTPUT Inserted.LeoAmbarID, Inserted.SAPAmbarID INTO @AmbarID\r\nSELECT LEFT(AmbarNo,16), AmbarID FROM dbo.ITTEXTILE_Ambarlar\r\nWHERE SAPAmbarID IS NULL AND Aktif = 1\r\nUPDATE A \r\nSET A.SAPAmbarID = FF.SAPAmbarID\r\nFROM dbo.ITTEXTILE_Ambarlar A\r\nINNER JOIN @AmbarID FF ON FF.AmbarID=A.AmbarID\r\n"
+}

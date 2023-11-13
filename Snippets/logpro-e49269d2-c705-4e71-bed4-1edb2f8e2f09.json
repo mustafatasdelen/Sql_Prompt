@@ -1,0 +1,6 @@
+{
+  "id": "e49269d2-c705-4e71-bed4-1edb2f8e2f09",
+  "prefix": "logpro",
+  "description": "",
+  "body": "Select LIO.Tarih,OVI.VeriIslemAdi,LIO.InfoParams,LIO.InfoKayit From\n  IT15_LogsITObjects LIO\nLEFT OUTER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\nLEFT OUTER JOIN  IT15_ObjectsM OM On OM.ITObjectID = LIO.DSITobjectID\nLEFT OUTER JOIN IT15_ObjectsM OMSP On OMSP.ITObjectID = OVI.SPITObjectID\nWhere LIO.InfoID Like '%(PlanMakinaID:14154%' Order By LIO.ITObjectsLogID Desc\n\nSELECT OVI.VeriIslemAdi,LIO.InfoKayit,LIO.InfoParams FROM  IT15_LogsITObjects LIO INNER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID --INNER JOIN  IT15_ObjectsM OM On OVI.SPITObjectID = LIO.ITObjectID \nWhere LIO.InfoKayit Like '%Barkod:5779)%' Order By LIO.ITObjectsLogID desc"
+}

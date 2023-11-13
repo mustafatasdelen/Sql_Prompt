@@ -1,0 +1,6 @@
+{
+  "id": "1927b02d-a828-42a8-bf71-c98e666d8adf",
+  "prefix": "nesneara",
+  "description": "",
+  "body": "SELECT S.ScreenID,OMM.ITObjectName AS NesneAdi,OM.ITObjectName IslemAdi,DAD.AnalizDataID AnalizEkranNo,SS.ScreenID AnalizScreenID FROM dbo.IT15_ObjectsVeriIslemleri OVI\r\nINNER JOIN dbo.IT15_ObjectsM OM ON OM.ITObjectID = OVI.SPITObjectID\r\nINNER JOIN dbo.IT15_ObjectsM OMM ON OMM.ITObjectID = OVI.ITObjectID\r\nLEFT OUTER JOIN dbo.IT15_Screens S ON S.ITObjectID = OMM.ITObjectID\r\nLEFT OUTER JOIN dbo.IT15_AnalizDataD DAD ON DAD.TSDatasetID = OMM.ITObjectID\r\nLEFT OUTER JOIN dbo.IT15_Screens SS ON SS.AnalizDataID = DAD.AnalizDataID\r\nWHERE OM.ITObjectName = ''"
+}

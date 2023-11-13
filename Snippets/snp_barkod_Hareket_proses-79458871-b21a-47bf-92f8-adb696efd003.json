@@ -1,0 +1,6 @@
+{
+  "id": "79458871-b21a-47bf-92f8-adb696efd003",
+  "prefix": "snp_barkod_Hareket_proses",
+  "description": "",
+  "body": "Select\tFD.SeriID, FD.FisDetayID, FD.AddDate, FT.FisTurAdi, P.ProsesAdi, FD.Miktar_Mt, S.UrunAdi, GCM.CikanID\nFrom\tIT06_HareketFisD FD\n\t\tINNER JOIN IT06_HareketFisM FM On FM.FisID = FD.FisID\n\t\tINNER JOIN IT01_FisTurleri FT ON FT.FisTurID = Fm.FisTurID\n\t\tINNER JOIN IT06_StokKarti SK On SK.UrunID = Fd.urunID \n\t\tINNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\n\t\tINNER JOIN IT08_SeriM SM ON Sm.seriID = FD.SeriID\n\t\tLEFT OUTER JOIN IT07_GerCikanMalzeme GCM ON GCM.FisDetayID = FD.FisDetayID\n\t\tOUTER APPLY(\n\t\tSelect\tDistinct GCM2.PRosesID\n\t\tFrom\tIT07_GerGirenMalzemeD G \n\t\t\t\tLEFT OUTER JOIN IT07_GerCikanMalzeme GCM2 ON GCM2.CikanID = G.CikanID\n\t\tWhere G.FisDetayID = FD.FisDetayID) GMD\n\t\tLEFT OUTER JOIN IT01_Prosesler P ON P.ProsesID = ISNULL(GCM.ProsesID,GMD.ProsesID)\n\t\tLEFT OUTER JOIN IT01_KaliteKodlari KK ON KK.KaliteID = SM.KaliteID \nWhere\tFD.SeriID = $CURSOR$\nOrder By FD.FisDetayID"
+}

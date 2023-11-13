@@ -1,0 +1,6 @@
+{
+  "id": "bf319610-e81e-44a3-9aa2-42084d47d9f1",
+  "prefix": "ssf_Paste",
+  "description": "",
+  "body": "$SELECTIONSTART$SELECT TOP 100 *\nFROM $PASTE$$SELECTIONEND$"
+}

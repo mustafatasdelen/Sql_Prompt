@@ -1,0 +1,6 @@
+{
+  "id": "6f201158-3dc3-4366-9e1c-2b0440ecef66",
+  "prefix": "snp_HamTopCekALT",
+  "description": "",
+  "body": "\nSELECT TSM.MakinaID, TSP.* FROM  IT08_TSeriParca TSP\nINNER JOIN IT08_TSeriM TSM On TSM.TSeriID = TSP.TSeriID\nWhere TSM.MakinaID = 1200\n\nSelect Distinct PRM.RotaID,IET.CikanMlzAmbarID,A.AmbarAdi,,PCM.AmbarID,PRM.AddDate FROM  IT05_PartiRotaM PRM\nINNER JOIN IT05_PlanCikanM PCM On PCM.IsEmriNo = PRM.IsEmriNo\nINNER JOIN IT06_Stoklar S On S.UrunTID = PCM.UrunTID\nINNER JOIN IT01_IsEmriTipleri IET On IET.IsEmriTipID = PRM.IsEmriTipID\nINNER JOIN IT01_Ambarlar A On A.AmbarID = IET.CikanMlzAmbarID\nWhere S.StokTipID = 3 And PRM.RotaID = 7 And PRM.Durumu  =1\n\nSelect GCM.ProsesID, SA.SeriID,Sa.* FROM  IT06_StokAmbar SA\nINNER JOIN IT05_PartiRotaM PRM On PRM.IsEmriNo = SA.IsEmriNo\nINNER JOIN IT07_GerCikanMalzeme GCM On GCM.SeriID = SA.SeriID   And GCM.ProsesID = 3\nINNER JOIN IT07_GerIsNo GI On GI.IsNo = GCM.IsNo\nINNER JOIN IT05_PartiRotaD PRD On PRD.IsEmriNo = PRM.IsEmriNo And PRD.Durumu  =1\n Where Sa.AmbarID  =52 And  PRM.Durumu  =1 Order By SA.AddDate asc\n\nSELECT * FROM  IT01_Ambarlar A Where A.AmbarID \nIN\n(\n52,\n55,\n486,\nNULL,\n52\n)\n\n\nSelect RD.RotaID, RD.SiraNo, P.ProsesAdi,P.GirenAmbarID,Rd.* FROM  IT05_RotaD RD \nINNER JOIN  IT01_Prosesler P On P.ProsesID = RD.ProsesID\nWhere RD.RotaID\nIN\n(\n301,\n7,\n429\n)"
+}

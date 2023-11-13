@@ -1,0 +1,6 @@
+{
+  "id": "331e264e-3e51-44b5-9f4c-7516d2277b11",
+  "prefix": "snp_merge",
+  "description": "",
+  "body": "MERGE ProductMaster AS TARGET\nUSING (\n    select [asin], salesrank, tbsalesrank from #X\n)  \nAS SOURCE ON (TARGET.ASIN = SOURCE.ASIN)\nWHEN MATCHED and (TARGET.salesRank <> SOURCE.salesRank)then\nUPDATE SET TARGET.SALESRANK = SOURCE.SALESRANK, target.tbSalesRank = source.tbSalesRank, etc.\nWHEN NOT MATCHED BY TARGET THEN\nINSERT (ASIN, tbSalesRank, salesRank)\nVALUES (source.asin, source.tbSalesRank, source.salesrank)\nWHEN NOT MATCHED BY SOURCE THEN DELETE; "
+}

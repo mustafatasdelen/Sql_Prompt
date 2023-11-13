@@ -1,0 +1,6 @@
+{
+  "id": "74732ff9-05bd-439b-8c21-319af0ac4a77",
+  "prefix": "snp_BarkodHareketleri",
+  "description": "",
+  "body": "Select    A.AmbarAdi, A2.AmbarAdi AS trambaradi,FD.SeriID, FisDetayID, FD.AddDate, FT.FisTurAdi, FD.Miktar_Mt, S.UrunAdi, SM.KaliteID, KK.KaliteKodu, SM.DepoAdresID\nFrom    IT06_HareketFisD FD\n        INNER JOIN IT06_HareketFisM FM On FM.FisID = FD.FisID\n        INNER JOIN IT01_FisTurleri FT ON FT.FisTurID = Fm.FisTurID\n        INNER JOIN IT06_StokKarti SK On SK.UrunID = Fd.urunID\n        INNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\n        INNER JOIN IT08_SeriM SM ON Sm.seriID = FD.SeriID\n        LEFT OUTER JOIN IT01_KaliteKodlari KK ON KK.KaliteID = SM.KaliteID\n\t\tINNER JOIN dbo.IT01_Ambarlar A ON A.AmbarID = FM.AmbarID\n\t\tLEFT OUTER JOIN dbo.IT01_Ambarlar A2 ON A2.AmbarID = FM.TrAmbarID\nWhere    FD.SeriID =  2897739--BARKOD NUMARASINI BURAYA YAPIŞTIR!!\nOrder By FD.FisDetayID"
+}

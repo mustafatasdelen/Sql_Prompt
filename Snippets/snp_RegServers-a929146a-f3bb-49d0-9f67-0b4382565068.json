@@ -1,0 +1,24 @@
+{
+  "id": "a929146a-f3bb-49d0-9f67-0b4382565068",
+  "prefix": "snp_RegServers",
+  "description": "",
+  "body": "\r\n\r\n\r\nSelect CONCAT('<sfc:Reference sml:ref=\"true\">',CHAR(13),'<sml:Uri>/RegisteredServersStore/ServerGroup/DatabaseEngineServerGroup/ServerGroup/LEO__SERVERS/RegisteredServer/',\r\nX.Firma,'-',REPLACE(X.Server,'.','_.') ,\r\n'</sml:Uri>',CHAR(13),'</sfc:Reference>'\r\n) As [sfc:Collection]\r\n \r\nFrom  xxxServerListSilinecek X \r\n\r\n\r\n-----\r\n\r\n\r\n\r\n\r\nDeclare @ID int, @alias1  Varchar(max),@alias2  Varchar(max),@alias3 Varchar(max),@alias4 Varchar(max)\r\n\r\n\r\nDeclare c Cursor Local For\r\n\t\tSelect x.ID,CONCAT(X.Firma,'-',REPLACE(X.Server,'.','_.')) alias1, CONCAT(X.Firma,'-',X.Server) alias2, x.Firma alias3, x.Server alias4\r\n\t\tFrom  xxxServerListSilinecek X\r\nOpen c\r\nFetch Next From c Into @ID, @alias1,@alias2,@alias3,@alias4\r\nWhile @@FETCH_STATUS = 0 Begin\r\n\r\nUpdate X \r\nSet X.document =   REPLACE(REPLACE(REPLACE(REPLACE('        <document>\r\n                  <docinfo>\r\n                    <aliases>\r\n                      <alias>/RegisteredServersStore/ServerGroup/DatabaseEngineServerGroup/ServerGroup/LEO__SERVERS/RegisteredServer/$alias1$</alias>\r\n                    </aliases>\r\n                    <sfc:version DomainVersion=\"1\" />\r\n                  </docinfo>\r\n                  <data>\r\n                    <RegisteredServers:RegisteredServer xmlns:RegisteredServers=\"http://schemas.microsoft.com/sqlserver/RegisteredServers/2007/08\" xmlns:sfc=\"http://schemas.microsoft.com/sqlserver/sfc/serialization/2007/08\" xmlns:sml=\"http://schemas.serviceml.org/sml/2007/02\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n                      <RegisteredServers:Parent>\r\n                        <sfc:Reference sml:ref=\"true\">\r\n                          <sml:Uri>/RegisteredServersStore/ServerGroup/DatabaseEngineServerGroup/ServerGroup/LEO__SERVERS</sml:Uri>\r\n                        </sfc:Reference>\r\n                      </RegisteredServers:Parent>\r\n                      <RegisteredServers:Name type=\"string\">$alias2$</RegisteredServers:Name>\r\n                      <RegisteredServers:Description type=\"string\">$alias3$</RegisteredServers:Description>\r\n                      <RegisteredServers:ServerName type=\"string\">$alias4$</RegisteredServers:ServerName>\r\n                      <RegisteredServers:UseCustomConnectionColor type=\"boolean\">false</RegisteredServers:UseCustomConnectionColor>\r\n                      <RegisteredServers:CustomConnectionColorArgb type=\"int\">-986896</RegisteredServers:CustomConnectionColorArgb>\r\n                      <RegisteredServers:ServerType type=\"ServerType\">DatabaseEngine</RegisteredServers:ServerType>\r\n                      <RegisteredServers:ConnectionStringWithEncryptedPassword type=\"string\">data source=$alias4$;pooling=False;multipleactiveresultsets=False;connect timeout=30;encrypt=False;trustservercertificate=False;packet size=4096</RegisteredServers:ConnectionStringWithEncryptedPassword>\r\n                      <RegisteredServers:CredentialPersistenceType type=\"CredentialPersistenceType\">None</RegisteredServers:CredentialPersistenceType>\r\n                      <RegisteredServers:OtherParams type=\"string\" />\r\n                      <RegisteredServers:AuthenticationType type=\"int\">1</RegisteredServers:AuthenticationType>\r\n                      <RegisteredServers:ActiveDirectoryTenant type=\"string\" />\r\n                    </RegisteredServers:RegisteredServer>\r\n                  </data>\r\n                </document>', '$alias1$', @alias1), '$alias2$', @alias2), '$alias3$', @alias3), '$alias4$', @alias4) \r\n\t\t\t\tFrom xxxServerListSilinecek X Where X.ID = @ID\r\n\t\t\t\r\n\r\n\tFetch Next From c Into @ID, @alias1,@alias2,@alias3,@alias4\r\nEnd\r\nClose c\r\nDeallocate c",
+  "placeholders": [
+    {
+      "name": "alias1",
+      "defaultValue": null
+    },
+    {
+      "name": "alias2",
+      "defaultValue": null
+    },
+    {
+      "name": "alias3",
+      "defaultValue": null
+    },
+    {
+      "name": "alias4",
+      "defaultValue": null
+    }
+  ]
+}

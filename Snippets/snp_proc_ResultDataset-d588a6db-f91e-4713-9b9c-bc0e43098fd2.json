@@ -1,0 +1,6 @@
+{
+  "id": "d588a6db-f91e-4713-9b9c-bc0e43098fd2",
+  "prefix": "snp_proc_ResultDataset",
+  "description": "",
+  "body": "Create Procedure $CURSOR$\n(\n\n@ITResultDS varchar(100) Output, @ITResultDSWhereText varchar(500) Output,\n@ITResultDS2 varchar(100) Output, @ITResultDS2WhereText varchar(500) Output \n)\nAs\nSet NoCount On\nBegin \n    Begin Try\n        \n\n    End Try \n    Begin Catch\t\n        Declare @ITObjectName nVarchar(126);\n        Set @ITObjectName = Object_Name(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEnd\nGo"
+}

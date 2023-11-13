@@ -1,0 +1,6 @@
+{
+  "id": "34c72191-0a56-4772-bf74-961a5f12122a",
+  "prefix": "id_on_of",
+  "description": "Set Identity_Insert On_Off",
+  "body": "Set Identity_Insert IT01_SAP_HareketAktarimDurumlari On\n\nInsert IT01_SAP_HareketAktarimDurumlari ( SAPHareketAktarimDurumID,SAPHareketAktarimDurumKodu, SAPHareketAktarimDurumAdi, Aciklama)\nValues (10, 'A kayıt aşamasında', 'A kayıt aşamasında', Null)\n\nSet Identity_Insert IT01_SAP_HareketAktarimDurumlari off"
+}

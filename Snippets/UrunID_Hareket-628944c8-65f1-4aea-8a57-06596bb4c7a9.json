@@ -1,0 +1,6 @@
+{
+  "id": "628944c8-65f1-4aea-8a57-06596bb4c7a9",
+  "prefix": "UrunID_Hareket",
+  "description": "",
+  "body": "Select\tFD.SeriID, FisDetayID, FD.AddDate, FT.FisTurAdi, FD.Miktar_Mt, FD.Miktar_Kg, FD.Miktar_Ad, S.UrunKodu, S.UrunAdi\nFrom\tIT06_HareketFisD FD\n\t\tINNER JOIN IT06_HareketFisM FM On FM.FisID = FD.FisID\n\t\tINNER JOIN IT01_FisTurleri FT ON FT.FisTurID = Fm.FisTurID\n\t\tINNER JOIN IT06_StokKarti SK On SK.UrunID = Fd.urunID \n\t\tINNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\nWhere\tFD.UrunID = $CURSOR$\nOrder By FD.FisDetayID"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "09547aa0-9f15-4db6-9326-bc2b41d63a44",
+  "prefix": "snp_ObjectsD_YenidenDuzenle",
+  "description": "",
+  "body": "Declare @ITObjectID int\n\nSet @ITObjectID =  $SELECTIONSTART$ ITObjectID Yİ HA PURYA YAPİŞTUR $SELECTIONEND$\n\nUpdate IT15_ObjectsD Set CaptionSize = 9 Where ITObjectID = @ITObjectID And IsNull(CaptionSize,0) < 9\nUpdate IT15_ObjectsD Set CaptionSize = 24 Where ITObjectID = @ITObjectID And IsNull(CaptionSize,0) > 24\n\n\n\n;WITH ASD AS (\n\n\tSelect\tITObjectDID, 5*ROW_NUMBER() over(order by ShowSiraNo) AS ShowSiraNo\n\tfrom\tIT15_ObjectsD \n\tWhere\tITobjectID = @ITObjectID\n\t\t\tAnd ShowSiraNo > 1\n\n)\nUPDATE\tOD Set ShowSiraNo = T.ShowSiraNo\nFrom\tIT15_ObjectsD OD\n\t\tINNER JOIN ASD T ON T.ITobjectDID = OD.ITObjectDID\n\t\t\nWhere  \t1 = 1"
+}

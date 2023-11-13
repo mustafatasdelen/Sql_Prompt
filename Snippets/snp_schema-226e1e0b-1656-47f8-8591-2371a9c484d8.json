@@ -1,0 +1,6 @@
+{
+  "id": "226e1e0b-1656-47f8-8591-2371a9c484d8",
+  "prefix": "snp_schema",
+  "description": "",
+  "body": "select * from [server].[database].[schema].[table]"
+}

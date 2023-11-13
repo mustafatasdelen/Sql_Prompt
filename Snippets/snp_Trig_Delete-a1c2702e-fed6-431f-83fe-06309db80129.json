@@ -1,0 +1,12 @@
+{
+  "id": "a1c2702e-fed6-431f-83fe-06309db80129",
+  "prefix": "snp_Trig_Delete",
+  "description": "Delete Trigger",
+  "body": "CREATE Trigger dbo.$TabloAdi$_Delete  ON [dbo].[$TabloAdi$]\nFOR Delete\nAS\n\t/* Yazan  : $USER$\n\t\tTarih : $DATE$\n\t*/\nSET NOCOUNT ON\nBEGIN\n\tBEGIN TRY\n\tDeclare \n\t/* Cursor Variables*/\n\tDeclare c$TabloAdi$_Delete Cursor For\n\tSelect \n\tFrom\tDeleted d\n\tOpen c$TabloAdi$_Delete\n\tFetch Next From c$TabloAdi$_Delete Into\n\tWhile @@Fetch_Status=0 Begin\n\n\t\tFetch Next From c$TabloAdi$_Delete Into\n\tEnd\n\tClose c$TabloAdi$_Delete\n\tDeallocate c$TabloAdi$_Delete\n\tEND TRY\n\tBEGIN CATCH\n\t\tDeclare @ITObjectName nvarchar(126)\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\n\t\tExecute SP15_GenerateError @ITObjectName\n\tEND CATCH\nEND\n",
+  "placeholders": [
+    {
+      "name": "TabloAdi",
+      "defaultValue": ""
+    }
+  ]
+}

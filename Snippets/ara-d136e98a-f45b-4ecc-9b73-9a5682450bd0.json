@@ -1,0 +1,6 @@
+{
+  "id": "d136e98a-f45b-4ecc-9b73-9a5682450bd0",
+  "prefix": "ara",
+  "description": "",
+  "body": "SELECT * FROM INFORMATION_SCHEMA.TABLES \nWHERE TABLE_NAME LIKE '%%'"
+}

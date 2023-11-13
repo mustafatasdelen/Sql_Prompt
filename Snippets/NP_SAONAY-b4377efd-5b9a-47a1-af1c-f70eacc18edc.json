@@ -1,0 +1,6 @@
+{
+  "id": "b4377efd-5b9a-47a1-af1c-f70eacc18edc",
+  "prefix": "NP_SAONAY",
+  "description": "",
+  "body": "UPDATE IT12_SiparisM SET IsITUpdate = IsITUpdate, IsSiparisVerildi = 1 , IsSiparisVerenID = 1, OnayTarihi = GETDATE(), OnaylayanPersonelID = 1, OnayDurumu = 1 WHERE SiparisID = 1756\n\n"
+}

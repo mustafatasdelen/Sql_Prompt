@@ -1,0 +1,6 @@
+{
+  "id": "48ccd70f-41b0-46cd-a36d-13037ceeded6",
+  "prefix": "snp_SAPKilitAc",
+  "description": "",
+  "body": "Declare @UretimID int\r\nDeclare c Cursor Local For\r\n    Select Su.UretimID\r\n    From    ITTEXTILE_StokAmbar SA\r\n                Inner Join ITTEXTILE_GerCikanMalzeme GCM On GCM.AmbarID = SA.AmbarID\r\n                                                            And GCM.UrunID = SA.UrunID\r\n                                                            And GCM.FirmaID = SA.FirmaID\r\n                                                            And GCM.IsEmriNo = SA.IsEmriNo\r\n                                                            And ISNULL(GCM.SeriID, -1) = ISNULL(SA.SeriID, -1)\r\n                                                            And  ISNULL(GCM.KaliteID, -1) = ISNULL(SA.KaliteID, -1)\r\n                INNER JOIN IT07_SAP_Uretim SU On SU.CikanID = GCM.CikanID\r\n    Where SA.IsSAPLock = 1 And SU.SAPUretimAktarimDurumID = 40\r\nOrder By SA.Adddate        \r\nOpen c\r\nFetch Next From c Into @UretimID\r\nWhile @@FETCH_STATUS = 0 Begin\r\n\r\n    Exec PSP07_SAP_StokAmbarKilitAc_Uretim @UretimID = @UretimID\r\n\r\n \r\n\r\n    Fetch Next From c Into @UretimID\r\nEnd\r\nClose c\r\nDeallocate c"
+}

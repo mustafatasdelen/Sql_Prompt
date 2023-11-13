@@ -1,0 +1,6 @@
+{
+  "id": "b58fe55d-d128-4a1a-8d1a-eda586153b63",
+  "prefix": "Log",
+  "description": "Log",
+  "body": "Select LIO.Tarih,OVI.VeriIslemAdi,LIO.InfoParams,LIO.InfoKayit From\n  IT15_LogsITObjects LIO\nLEFT OUTER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\nLEFT OUTER JOIN  IT15_ObjectsM OM On OM.ITObjectID = LIO.DSITobjectID\nLEFT OUTER JOIN IT15_ObjectsM OMSP On OMSP.ITObjectID = OVI.SPITObjectID\nWhere LIO.InfoID Like '%(PlanMakinaID:14154%' Order By LIO.ITObjectsLogID Desc\n\n   \n    SELECT OVI.VeriIslemAdi,LIO.Tarih,LIO.InfoKayit,LIO.InfoParams, OM.ITObjectID, OM.ITObjectName,OM.ITObjectAlias\n    From  IT15_LogsITObjects LIO INNER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\n    Inner JOIN  IT15_ObjectsM OM On OM.ITObjectID = OVI.ITObjectID\n    Where LIO.InfoKayit Like '%181545%' Order By LIO.ITObjectsLogID Desc"
+}

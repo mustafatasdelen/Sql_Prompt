@@ -1,0 +1,6 @@
+{
+  "id": "f4fdc995-ce89-4a50-a712-42a0c7a18b49",
+  "prefix": "snp_proc",
+  "description": "",
+  "body": "Create Procedure $CURSOR$\nAs\nSet NoCount On\nBegin \n    Begin Try\n        \n\n    End Try \n    Begin Catch\t\n        Declare @ITObjectName nVarchar(126);\n        Set @ITObjectName = Object_Name(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEnd"
+}

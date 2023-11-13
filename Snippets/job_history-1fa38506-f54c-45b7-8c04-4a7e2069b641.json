@@ -1,0 +1,6 @@
+{
+  "id": "1fa38506-f54c-45b7-8c04-4a7e2069b641",
+  "prefix": "job_history",
+  "description": "job_history",
+  "body": "select \n j.name as 'JobName',\n run_date,\n run_time\nFrom msdb.dbo.sysjobs j \nINNER JOIN msdb.dbo.sysjobhistory h \n ON j.job_id = h.job_id \nwhere j.enabled = 1 --AND j.name = 'SendMail_Gunluk_0730'  --Only Enabled Jobs\norder by JobName, run_date, run_time ASC"
+}
