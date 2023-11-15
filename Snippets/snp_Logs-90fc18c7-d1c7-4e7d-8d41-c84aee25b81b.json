@@ -1,0 +1,6 @@
+{
+  "id": "90fc18c7-d1c7-4e7d-8d41-c84aee25b81b",
+  "prefix": "snp_Logs",
+  "description": "",
+  "body": "Select  L.LogID, L.FirmaPersonelID, L.FirmaID, L.LogTypeID\r\n--, L.VideoID,  L.StartDate, L.EndDate, L.LogHour, L.LogMinute, L.LogSecond, L.AddDate, L.IsComplated,\r\n-- L.IsTotalComplatedCount, L.IsLastWatchedSeconds, L.IsQuizFinish \r\nFrom    IT15_Logs L\r\n\r\nSelect  * From  IT15_FirmaPersonelleri FP"
+}

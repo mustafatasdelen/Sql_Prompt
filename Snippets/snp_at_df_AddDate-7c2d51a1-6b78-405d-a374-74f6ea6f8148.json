@@ -1,0 +1,12 @@
+{
+  "id": "7c2d51a1-6b78-405d-a374-74f6ea6f8148",
+  "prefix": "snp_at_df_AddDate",
+  "description": "",
+  "body": "ALTER TABLE $tablename$\r\n  ADD CONSTRAINT DF_$tablename$_AddDate\r\n  DEFAULT getdate() For AddDate;\r\nGo\r\n",
+  "placeholders": [
+    {
+      "name": "tablename",
+      "defaultValue": null
+    }
+  ]
+}

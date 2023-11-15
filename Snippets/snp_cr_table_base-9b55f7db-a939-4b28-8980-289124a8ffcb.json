@@ -1,0 +1,16 @@
+{
+  "id": "9b55f7db-a939-4b28-8980-289124a8ffcb",
+  "prefix": "snp_cr_table_base",
+  "description": "Basic Tanım Table",
+  "body": "CREATE TABLE [dbo].[$TableName$](\n\t[$ColumnName$ID] [INT] IDENTITY(1,1) NOT NULL,\n\t[$ColumnName$Kodu] varchar(50) NOT NULL,\n\t[$ColumnName$Adi] varchar(100) NULL,\n\t[AddDate] [SMALLDATETIME] NULL DEFAULT(GETDATE()),\n\t[AddUser] [INT] NULL DEFAULT(dbo.F15_GetActivePersonelID(-1))\n CONSTRAINT [PK_$TableName$] PRIMARY KEY CLUSTERED \n(\n\t[$ColumnName$ID] ASC\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]\n) ON [PRIMARY]\nGO\nCREATE UNIQUE NONCLUSTERED INDEX [IX_$TableName$] ON [dbo].[$TableName$]\n(\n\t[$ColumnName$Kodu] ASC\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]\nGO\n\n\n\n",
+  "placeholders": [
+    {
+      "name": "TableName",
+      "defaultValue": ""
+    },
+    {
+      "name": "ColumnName",
+      "defaultValue": ""
+    }
+  ]
+}

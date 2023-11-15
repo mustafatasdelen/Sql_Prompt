@@ -1,0 +1,6 @@
+{
+  "id": "c51ca24d-9431-4268-a4f2-9645e36b39b9",
+  "prefix": "snp_VarsaSilYenidenOlustur",
+  "description": "",
+  "body": "If OBJECT_ID('dbo.OurPeople4', 'U') Is Not Null\r\n    Drop Table dbo.OurPeople4;\r\nCreate Table dbo.OurPeople4 (BusinessEntityid Int Not Null,\r\n                             FullName Varchar(40) Not Null);"
+}

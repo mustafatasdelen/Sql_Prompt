@@ -1,0 +1,6 @@
+{
+  "id": "526ae2bb-104d-4e4e-96c3-b7f195af696d",
+  "prefix": "toe",
+  "description": "tSQLt.AssertObjectExists [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.AssertObjectExists @ObjectName = '$CURSOR$';"
+}

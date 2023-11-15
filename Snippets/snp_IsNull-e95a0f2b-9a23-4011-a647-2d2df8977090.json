@@ -1,0 +1,6 @@
+{
+  "id": "e95a0f2b-9a23-4011-a647-2d2df8977090",
+  "prefix": "snp_IsNull",
+  "description": "",
+  "body": "ISNULL( $CURSOR$, 0)"
+}

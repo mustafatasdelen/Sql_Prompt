@@ -1,0 +1,6 @@
+{
+  "id": "21dcec4b-49a5-49df-bf66-58e084f7ad7d",
+  "prefix": "snp_bef_atama",
+  "description": "",
+  "body": "\r\nSELECT * FROM IT15_ObjectsM OM \r\nWhere OM.ITObjectName Like '%$PASTE$%'\r\nORDER BY 1 Desc\r\n\r\nUpdate OM Set OM.BefITObjectID= , OM.IsITUpdate=OM.IsITUpdate --trig çalışması lazım\r\nFROM IT15_ObjectsM OM Where ITObjectID="
+}

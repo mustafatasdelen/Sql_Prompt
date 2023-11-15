@@ -1,0 +1,6 @@
+{
+  "id": "9a7d9f82-d2d0-4159-a28a-2f7160ff9cea",
+  "prefix": "tff",
+  "description": "tSQLt.FakeFunction [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.FakeFunction @FunctionName = '$CURSOR$', @FakeFunctionName = '';"
+}

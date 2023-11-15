@@ -1,0 +1,6 @@
+{
+  "id": "7e74b1bb-d47d-480b-9671-b2a29a111c60",
+  "prefix": "snp_MamulKumasBilgileri",
+  "description": "",
+  "body": "        Inner Join IT06_Stoklar_MamulKumas SMK On SMK.UrunTID = PRM.CikanUrunTID\r\n        Inner Join IT06_Stoklar_HamKumas SHK On SHK.UrunTID = SMK.HamKumasUrunTID\r\n        Inner Join IT06_Stoklar S On S.UrunTID = SHK.HamKumasUrunTID\r\n        Inner Join IT01_Firmalar F On F.FirmaID = S.FirmaID\r\n        Inner Join IT01_KumasKaliteAdlari KKA On KKA.KumasKaliteID = SMK.KumasKaliteID\r\n        Inner Join IT01_Renkler R On R.RenkID = SMK.RenkID\r\n        Inner Join IT01_BaskiDesenVaryant BDV On BDV.BaskiDesenVaryantID = SMK.BaskiDesenVaryantID"
+}

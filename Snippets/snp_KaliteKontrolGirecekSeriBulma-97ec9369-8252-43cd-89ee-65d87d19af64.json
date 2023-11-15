@@ -1,0 +1,6 @@
+{
+  "id": "97ec9369-8252-43cd-89ee-65d87d19af64",
+  "prefix": "snp_KaliteKontrolGirecekSeriBulma",
+  "description": "",
+  "body": "Select  P.ProsesAdi, SA.SeriID\r\nFrom    IT06_StokAmbar SA\r\n        Inner Join IT01_Prosesler P On P.GirenAmbarID = SA.AmbarID\r\nWhere   P.ProsesID In (100, 101)\r\n        --  And Not Exists (Select  GMM.SeriID From IT07_GerGirenMalzemeD GGMD Inner Join IT07_GerGirenMalzemeM GMM On GMM.GirenID = GGMD.GirenID Where GMM.SeriID = SA.SeriID)\r\n        And Not Exists (Select  SeriID From IT08_TSeriM TSM Where   TSM.GirenSeriID = SA.SeriID)"
+}

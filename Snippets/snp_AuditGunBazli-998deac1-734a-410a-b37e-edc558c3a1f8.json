@@ -1,0 +1,6 @@
+{
+  "id": "998deac1-734a-410a-b37e-edc558c3a1f8",
+  "prefix": "snp_AuditGunBazli",
+  "description": "",
+  "body": "Select  *\r\nFrom    LEOAuditDB.dbo.DDLEvents\r\nWhere   DATEPART(yy, EventDate) = YEAR(GETDATE()) And DATEPART(mm, EventDate) = MONTH(GETDATE()) And   DATEPART(dd, EventDate) = DAY(GETDATE()) And DatabaseName Like '%$CURSOR$$DBNAME$%' And HostName = dbo.ITHostName()"
+}

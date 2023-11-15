@@ -1,0 +1,6 @@
+{
+  "id": "6e8ef4e0-1c82-4d38-aef0-8fa32e88bd59",
+  "prefix": "tat",
+  "description": "tSQLt.ApplyTrigger [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.ApplyTrigger @TableName = '$CURSOR$', @TriggerName = '';"
+}

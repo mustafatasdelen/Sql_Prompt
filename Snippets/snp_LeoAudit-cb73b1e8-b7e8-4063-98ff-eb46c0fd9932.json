@@ -1,0 +1,6 @@
+{
+  "id": "cb73b1e8-b7e8-4063-98ff-eb46c0fd9932",
+  "prefix": "snp_LeoAudit",
+  "description": "Leo Audit Search",
+  "body": "SELECT * FROM LEOAuditDB.dbo.DDLEvents Where ObjectName = '$CURSOR$' \r\nAnd DatabaseName = 'LEOTEXTILE'\r\nORDER BY LeoEventID Desc"
+}

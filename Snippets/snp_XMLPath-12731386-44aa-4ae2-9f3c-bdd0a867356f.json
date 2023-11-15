@@ -1,0 +1,6 @@
+{
+  "id": "12731386-44aa-4ae2-9f3c-bdd0a867356f",
+  "prefix": "snp_XMLPath",
+  "description": "",
+  "body": "Select  @msj1 = SHMD.SHash\r\nFrom    (Select STUFF(\r\n                (Select     CONCAT(\r\n                                ';', SH.HamUrunTID, '- UrunAgaciBirim_Kg', SH.UrunAgaciBirim_Kg, '-TuketimBirim_Kg', SH.TuketimBirim_Kg, '-IhtiyacBirim_Kg',\r\n                                SH.IhtiyacBirim_Kg)\r\n                 From       IT06_StokHammadde SH\r\n                 Where      SH.UrunTID = @UrunTID And  SH.HamUrunTID = @HamUrunTID\r\n                For Xml Path('')), 1, 1, '') SHash) SHMD\r\n\r\nRaiserror('%s', 16, 1, @msj1)"
+}

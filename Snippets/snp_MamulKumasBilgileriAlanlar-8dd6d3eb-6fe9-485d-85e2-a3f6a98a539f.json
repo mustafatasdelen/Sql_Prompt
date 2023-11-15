@@ -1,0 +1,6 @@
+{
+  "id": "8dd6d3eb-6fe9-485d-85e2-a3f6a98a539f",
+  "prefix": "snp_MamulKumasBilgileriAlanlar",
+  "description": "",
+  "body": "SMK.UrunTID, KKA.KumasKaliteAdi, R.RenkKodu, R.RenkAdi, BDV.BaskiDesenVaryantKodu,\r\n                 BDV.BaskiDesenVaryantAdi,"
+}

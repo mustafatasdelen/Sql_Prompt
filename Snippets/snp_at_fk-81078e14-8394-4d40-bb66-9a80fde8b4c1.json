@@ -1,0 +1,20 @@
+{
+  "id": "81078e14-8394-4d40-bb66-9a80fde8b4c1",
+  "prefix": "snp_at_fk",
+  "description": "",
+  "body": "ALTER TABLE $TableName$\r\n   ADD CONSTRAINT FK_$TableName$_$TableName2$ FOREIGN KEY ($ColumnName$)\r\n      REFERENCES $TableName2$ ($ColumnName$)\r\n      --ON DELETE CASCADE\r\n      --ON UPDATE CASCADE\r\n;\r\n",
+  "placeholders": [
+    {
+      "name": "TableName",
+      "defaultValue": null
+    },
+    {
+      "name": "ColumnName",
+      "defaultValue": null
+    },
+    {
+      "name": "TableName2",
+      "defaultValue": null
+    }
+  ]
+}

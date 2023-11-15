@@ -1,0 +1,6 @@
+{
+  "id": "a859ace0-6551-475b-9f2d-40251de5f233",
+  "prefix": "snp_OtoUrunAdiTopluGuncellestir",
+  "description": "",
+  "body": "Declare @UrunTID int\r\n\r\nDeclare xxxx Cursor Local For\r\nSelect  S.UrunTID From IT06_Stoklar S\r\nWhere S.StokTipID = 1 And ISNULL(S.IsImportData,0) = 0 Order By S.UrunTID asc\r\n\r\nOpen xxxx\r\nFetch Next From xxxx Into @UrunTID\r\nWhile @@FETCH_STATUS=0 Begin\r\n\r\n\tExec PSP06_OtoUrunKoduIplik @UrunTID = @UrunTID\r\n\t\r\n\t\r\n\tFetch Next From xxxx Into @UrunTID\r\nEnd\r\nClose xxxx\r\nDeallocate xxxx\r\n\r\nGo"
+}

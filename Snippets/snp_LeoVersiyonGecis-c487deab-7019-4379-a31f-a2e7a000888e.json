@@ -1,0 +1,6 @@
+{
+  "id": "c487deab-7019-4379-a31f-a2e7a000888e",
+  "prefix": "snp_LeoVersiyonGecis",
+  "description": "",
+  "body": "UPDATE IT15_System SET DBVersion='3.0.0.2'\r\nUpdate IT15_ITProgramlar SET ITLastVersion='3.0.0.2' WHERE ITProgramName LIKE '%Leo%'"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "7f4a8a75-fadd-4749-ad91-2019c08c6136",
+  "prefix": "snp_cr_sp_ExecRapor",
+  "description": "SP Rapor EXEC eder",
+  "body": "CREATE PROCEDURE dbo.PSP08_$SPName$\n(\n@IsRaporExec int OUTPUT,  @EXCRaporID int OUTPUT, @EXCRaporFieldName varchar(100) OUTPUT, @EXCRaporFilterName varchar(100) OUTPUT,\n@EXCRaporFieldValue varchar(100) OUTPUT, @EXCRaporOutPutType  tinyint OUTPUT, @EXCRaporShowDialog tinyint OUTPUT, @EXCRaporPrintSayisi INT OUTPUT)\nAS\nSET NOCOUNT ON\nBEGIN \nBEGIN TRY\n\tSet @IsRaporExec=1\n\tSet @EXCRaporID = \n\tSet @EXCRaporFieldName = 'SeriID'\n\tSet @EXCRaporFilterName = '='\n\tSet @EXCRaporFieldValue = Convert(varchar(30), @SeriID)\n\tSet @EXCRaporOutPutType = 0\n\tSet @EXCRaporShowDialog = 1\n\tSET @EXCRaporPrintSayisi=1\nEND TRY \n\tBEGIN CATCH\t\n\t\tDeclare @ITObjectName nvarchar(126)\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\n\t\tExecute SP15_GenerateError @ITObjectName\n\tEND CATCH\nEND\nGO\n",
+  "placeholders": [
+    {
+      "name": "SPName",
+      "defaultValue": ""
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "4a291d49-ced3-44da-a036-8c5b6402a9a7",
+  "prefix": "snp_IconAktifGuncelle",
+  "description": "",
+  "body": "Select  *\r\nFrom    IT15_IconLib IL\r\nWhere   IL.IconLibID In (Select Distinct S.IconLibID From   IT15_Screens S Where S.IconLibID Is Not Null)\r\n\r\nUpdate IL Set IL.Aktif = 1\r\nFrom    IT15_IconLib IL\r\nWhere   IL.IconLibID In (Select Distinct S.IconLibID From   IT15_Screens S Where S.IconLibID Is Not Null)\r\n\r\nSelect  *\r\nFrom    IT15_IconLib IL\r\nWhere   IL.IconLibID In (Select Distinct S.IconLibID From   IT15_Screens S Where S.IconLibID Is Not Null)"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "ff9a594e-fdc7-4c2b-8bcd-d6a3a0093719",
+  "prefix": "snp_RaporBaglanti",
+  "description": "",
+  "body": "Select  R.ITRaporIslemID, R.RaporID, R.RaporAdi, M.ModulAdi, MAG.ModulAltGrupKodu, NIG.NavItemGroupName, S.ScreenCaption, S.ScreenID\r\nFrom    IT15_ObjectsRaporIslemleri R\r\n        Inner Join IT15_Screens S On S.ITObjectID = R.ITObjectID\r\n        Left Join IT15_NavItemGroups NIG On NIG.NavItemGroupID = S.NavItemGroupID\r\n        Inner Join IT15_ModulAltGruplari MAG On MAG.ModulAltGrupID = S.ModulAltGrupID\r\n        Inner Join IT15_Moduller M On M.ModulID = MAG.ModulID\r\nWhere   R.RaporID = 2005\r\nGo\r\n"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "0effba60-0e26-41a8-b40f-3831e35f8b7b",
+  "prefix": "snp_cr_sp_InterAktif",
+  "description": "Leo InterAktif SP için kullanılır.",
+  "body": "CREATE PROCEDURE dbo.$PSP_xxxx$(\n/* Interaktif */\n@Cevap tinyint , @SoruNo smallint Output , @msjText varchar(200) Output , @Sonuc tinyint Output)\nAs\nBegin\n    Begin TRY\n\t\t/*\n\t\tYazan\t: $USER$\n\t\tTarih\t: $DATE$\n\t\tAçıklama:\n\t\t\t\t- Sonuç\t\t1: ise işlem devam eder\n\t\t\t\t- Cevap:\t0: Kullanıcı Evet demiştir.\n\t\t\t\t\t\t\t1:Kullanıcı Hayır demiştir.\n\t\t*/\n\t\tDECLARE @IslemOk TINYINT\n        Set @IslemOk = 0\n\t\tSET @Sonuc=1\n        If IsNull(@SoruNo,-1) = -1 Begin\n\t\t\tSet @msjText = Concat('İlk Soruyu soruyorum ', Char(13) ,'Devam Edilsin mi?')\n\t\t\tSet @SoruNo = 10\n\t\t\tSet @Sonuc = 1\n\t\tEND else\n\t\tIf @SoruNo = 10 Begin\n            If @Cevap = 0 BEGIN\n\t\t\t\tSet @msjText = Concat('Bak bu İkinci Sorum.', Char(13) ,'Gerçekten Devam Edilsin mi?')\n\t\t\t\tSET @SoruNo=20\n            end else begin\n\t\t\t\tSET @Sonuc=0\n\t\t\tend\n        END else \n\t\tIf @SoruNo = 20 BEGIN\n\t\t\tIF @Cevap = 0 BEGIN\n\t\t\t\tSET @IslemOk=1\n\t\t\tEND ELSE BEGIN\n\t\t\t\tSet @Sonuc = 0\n\t\t\tend\n        end\n\t\tIf @IslemOk = 1 BEGIN\n\t\t\t/*UPDATE, DELETE, INSERT*/\n            Set @Sonuc = 0\n        End\n    End Try \n    Begin Catch\t\n        Declare @ITObjectName nVarchar(126)\n        Set @ITObjectName = Object_Name(@@PROCID)\n        Execute SP15_GenerateError @ITObjectName\n    End Catch\nEnd\n\nGO",
+  "placeholders": [
+    {
+      "name": "PSP_xxxx",
+      "defaultValue": ""
+    }
+  ]
+}

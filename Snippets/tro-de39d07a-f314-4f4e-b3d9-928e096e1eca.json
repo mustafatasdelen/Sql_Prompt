@@ -1,0 +1,6 @@
+{
+  "id": "de39d07a-f314-4f4e-b3d9-928e096e1eca",
+  "prefix": "tro",
+  "description": "tSQLt.RemoveObject [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.RemoveObject @ObjectName = '$CURSOR$';"
+}

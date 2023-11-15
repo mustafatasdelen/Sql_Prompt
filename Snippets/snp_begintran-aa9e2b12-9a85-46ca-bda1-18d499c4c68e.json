@@ -1,0 +1,6 @@
+{
+  "id": "aa9e2b12-9a85-46ca-bda1-18d499c4c68e",
+  "prefix": "snp_begintran",
+  "description": "begin transaction",
+  "body": "Begin Try\n    Begin Tran\n        \n    Commit Tran\n End Try\n Begin Catch\n    Declare @msj Varchar(1000)\n    Set @msj = ERROR_MESSAGE()\n    Raiserror('%s', 16,1, @msj)\n    Rollback tran\n End Catch"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "9341137f-ef69-400b-ab59-5202a4387e5a",
+  "prefix": "scf",
+  "description": "Count number of records returned by query",
+  "body": "SELECT COUNT(*) FROM "
+}

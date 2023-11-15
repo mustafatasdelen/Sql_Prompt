@@ -1,0 +1,6 @@
+{
+  "id": "b7ed1377-b2de-4154-880e-616482693637",
+  "prefix": "snp_VeriIslemAdlandırma",
+  "description": "",
+  "body": "Select      OM.ITObjectName, OMV.ITObjectName DataSetITObjectName, S.ScreenID, S.ScreenCaption, DS.ScreenID DetayScreenID, DS.ScreenCaption DetayScreenCaption,\r\n            OVI.VeriIslemAdi, OM.ITObjectAlias, ADDD.AnalizDataID, DADD.AnalizDataID DetayAnalizDataID\r\nFrom        IT15_ObjectsVeriIslemleri OVI\r\n            Inner Join IT15_ObjectsM OM On OM.ITObjectID = OVI.SPITObjectID\r\n            Inner Join IT15_ObjectsM OMV On OMV.ITObjectID = OVI.ITObjectID\r\n            Left Outer Join IT15_Screens S On S.ITObjectID = OMV.ITObjectID\r\n            Left Outer Join IT15_Screens DS On DS.ITObjectID2 = OMV.ITObjectID\r\n            Left Outer Join IT15_AnalizDataD ADDD On ADDD.TSDatasetID = OMV.ITObjectID\r\n            Left Outer Join IT15_AnalizDataD DADD On DADD.TSDetayDatasetID = OMV.ITObjectID\r\nWhere       OVI.VeriIslemAdi <> OM.ITObjectAlias And OM.ITType = 3\r\nOrder By    OM.ITObjectID, OVI.ITVeriIslemID"
+}

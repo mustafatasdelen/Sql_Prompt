@@ -1,0 +1,6 @@
+{
+  "id": "c22d5840-5c47-443e-93d6-7115fe01d3d4",
+  "prefix": "idtr",
+  "description": "IF EXISTS DROP: Trigger -  [provided by @sqlity]",
+  "body": "IF OBJECT_ID('$CURSOR$') IS NOT NULL DROP TRIGGER ;\nGO\n"
+}

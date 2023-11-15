@@ -1,0 +1,6 @@
+{
+  "id": "6b89d4ce-4b51-4d01-b734-627a4e622493",
+  "prefix": "snp_RaiseParametre",
+  "description": "raiserror parametre alınmadı",
+  "body": "Raiserror('<%d> parametresi alınamadı!',16,1, @$CURSOR$)"
+}

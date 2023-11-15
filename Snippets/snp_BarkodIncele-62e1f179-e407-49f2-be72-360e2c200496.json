@@ -1,0 +1,6 @@
+{
+  "id": "62e1f179-e407-49f2-be72-360e2c200496",
+  "prefix": "snp_BarkodIncele",
+  "description": "",
+  "body": "Select FD.SeriID, FisDetayID,  FD.AddDate, FT.FisTurAdi, FD.Miktar_Mt, FD.Miktar_Kg, S.UrunAdi, SM.KaliteID, KK.KaliteKodu, SM.DepoAdresID, FM.AmbarID,a.AmbarAdi, FM.TrAmbarID, a2.AmbarAdi, FD.IsEmriNo, FD.UrunID, FD.FisID\r\nFrom IT06_HareketFisD FD\r\nINNER JOIN IT06_HareketFisM FM On FM.FisID = FD.FisID\r\nINNER JOIN IT01_FisTurleri FT ON FT.FisTurID = Fm.FisTurID\r\nINNER JOIN IT06_StokKarti SK On SK.UrunID = Fd.urunID\r\nINNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\r\nINNER JOIN IT08_SeriM SM ON Sm.seriID = FD.SeriID\r\nINNER JOIN IT01_Ambarlar A On A.AmbarID = FM.AmbarID\r\nLEFT OUTER JOIN IT01_Ambarlar A2 On A2.AmbarID = FM.TrAmbarID\r\nLEFT OUTER JOIN IT01_KaliteKodlari KK ON KK.KaliteID = SM.KaliteID\r\nWhere FD.SeriID = $CURSOR$\r\nOrder By FD.FisDetayID"
+}

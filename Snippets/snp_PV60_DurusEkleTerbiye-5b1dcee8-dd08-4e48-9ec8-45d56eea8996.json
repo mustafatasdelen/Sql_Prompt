@@ -1,0 +1,6 @@
+{
+  "id": "5b1dcee8-dd08-4e48-9ec8-45d56eea8996",
+  "prefix": "snp_PV60_DurusEkleTerbiye",
+  "description": "",
+  "body": "Alter View PV60_DurusEkle_Terbiye\r\nAs\r\nSelect  PCS.TPulseCikanStateID, PCS.TPulseCikanID, PCS.PulseStateID, PCS.BasMt, PCS.BasZaman, PCS.PersonelID, PCS.MakinaBolumID, PCS.PulseCikanStateBolgeID,\r\n        PCS.MakinaID, PCS.Aciklama, dbo.F05_BitimSureText(99, ISNULL(PCS.BasZaman, GETDATE()), ISNULL(PCS.BitZaman, GETDATE()), 0) DurusSure,\r\n        P.PersonelAdi BasPersonelAdi, PS.PulseStateName DurusNedenKodu, M.MakinaNo\r\nFrom    IT60_TPulseCikanState PCS\r\n        Left Outer Join IT60_PulseState PS On PS.PulseStateID = PCS.PulseStateID\r\n        Left Outer Join dbo.IT01_Personel P On P.PersonelID = PCS.PersonelID\r\n\t\tLEFT OUTER JOIN IT01_Makinalar M On M.MakinaID = PCS.MakinaID\r\nGo"
+}

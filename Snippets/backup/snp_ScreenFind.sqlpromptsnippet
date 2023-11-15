@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>snp_ScreenFind</Title>
+      <Shortcut>snp_ScreenFind</Shortcut>
+      <Description />
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[	SELECT ITObjectID,* FROM dbo.IT15_ObjectsM WHERE ITObjectName = 'SP03_Numune_URMIns'
+	
+	SELECT * FROM dbo.IT15_ObjectsVeriIslemleri WHERE SPITObjectID = 7661
+
+	SELECT S.ScreenID,S.ScreenName,* FROM  dbo.IT15_ObjectsM OM
+	INNER JOIN dbo.IT15_Screens S ON S.ITObjectID = OM.ITObjectID
+	 WHERE OM.ITObjectID IN (7610,7621,7692,8084,11419)]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

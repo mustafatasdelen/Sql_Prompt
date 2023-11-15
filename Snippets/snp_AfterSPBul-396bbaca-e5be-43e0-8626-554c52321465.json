@@ -1,0 +1,6 @@
+{
+  "id": "396bbaca-e5be-43e0-8626-554c52321465",
+  "prefix": "snp_AfterSPBul",
+  "description": "",
+  "body": "Select  OD.ITSPSecimAfter, OM.ITObjectName, *\r\nFrom    IT15_ObjectsD OD\r\n        Inner Join IT15_ObjectsM OM On OM.ITObjectID = OD.ITObjectID\r\nWhere   OD.ITObjectID In (22903, 22696, 23477) And  (OD.FieldCaption Like '%Metre%' Or  OD.FieldCaption Like '%kg%')"
+}

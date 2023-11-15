@@ -1,0 +1,6 @@
+{
+  "id": "d4076d52-5928-46d2-93dd-b94f522b6625",
+  "prefix": "snp_HmkLogoKaydetOdemeSekliGuncelle",
+  "description": "",
+  "body": "SELECT FM.OdemeSekliID, * FROM IT06_FaturaM FM Where FM.FaturaID = 4772\r\n\r\n--478\r\nUpdate FM Set OdemeSekliID = 478, FM.IsITUpdate = FM.IsITUpdate\r\n\r\nFROM IT06_FaturaM FM Where FM.FaturaID = 4772"
+}

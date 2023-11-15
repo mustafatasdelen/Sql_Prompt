@@ -1,0 +1,6 @@
+{
+  "id": "5f5897a3-0302-4628-b031-30793c890c28",
+  "prefix": "snp_findIndex",
+  "description": "",
+  "body": "select SCHEMA_NAME(tbl.schema_id) as [Şema İsmi],\nOBJECT_NAME(us.object_id) as [Tablo İsmi],\n'DROP INDEX '+i.name + ' ON  [' + SCHEMA_NAME(tbl.schema_id)+'].['+ OBJECT_NAME(us.object_id)+ ']' as [Drop Index Script],\nus.last_user_seek [Son Seek Zamanı],\nus.user_seeks [Seek Sayısı],\nCASE us.user_seeks WHEN 0 THEN 0\nELSE us.user_seeks*1.0 /(us.user_scans + us.user_seeks) * 100.0 END AS SeekYüzdesi,\nus.last_user_scan [Son Scan Zamanı],\nus.user_scans [Scan Sayısı],\nCASE us.user_scans WHEN 0 THEN 0\nELSE us.user_scans*1.0 /(us.user_scans + us.user_seeks) * 100.0 END AS ScanYüzdesi,\nus.last_user_update [Son Update Zamanı],\nus.user_updates [Update Sayısı]\nFROM sys.dm_db_index_usage_stats us\nINNER JOIN sys.indexes i ON i.object_id=us.object_id and i.index_id = us.index_id\nINNER JOIN sys.tables tbl ON tbl.object_id=us.object_id\nWHERE us.database_id = DB_ID('LEOTEXTILE') \n\tAND OBJECT_NAME(us.object_id) = 'XXX'"
+}

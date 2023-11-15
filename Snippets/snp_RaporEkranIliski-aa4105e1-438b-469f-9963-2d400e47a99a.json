@@ -1,0 +1,6 @@
+{
+  "id": "aa4105e1-438b-469f-9963-2d400e47a99a",
+  "prefix": "snp_RaporEkranIliski",
+  "description": "",
+  "body": "SELECT S.ScreenCaption, * FROM IT15_ObjectsRaporIslemleri ORI\r\nLEFT OUTER JOIN IT15_Screens S On S.ITObjectID = ORI.ITObjectID\r\nWhere ORI.RaporID=$CURSOR$"
+}

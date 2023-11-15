@@ -1,0 +1,6 @@
+{
+  "id": "24e104a4-630c-41ce-8e1c-ec027374ccee",
+  "prefix": "snp_cv",
+  "description": "",
+  "body": "/* Yazan  : ZZ_Guncel_OBulbul, Tarih : 4.02.2022, Açıklama: 2085 ekranında, Taşıyıcı araç içindeki stokları göstermek için oluşturmuştur.*/\r\nCreate View PV08_TasiyiciAracDetay\r\nAs\r\nSelect  TA.TasiyiciAracID, TA.TasiyiciAracNo, /*SM.DepoAdresID,  ADA.DepoAdresKodu,*/ SM.SeriID, SM.Miktar_Mt, SM.Miktar_Kg, SM.BrutMiktar_Kg, KK.KaliteKodu,\r\n        SM.Miktar_Yard, F.FirmaKodu, ISNULL(F.FirmaAdi, TA.TasiyiciAracNo) FirmaAdi, S.UrunTID, S.UrunAdi   --ISNULL(S.UrunKodu, S.UrunAdi) UrunAdi\r\nFrom    IT01_TasiyiciAraclar TA\r\n        Inner Join IT08_SeriM SM On SM.TasiyiciAracID = TA.TasiyiciAracID\r\n        Inner Join IT06_StokKarti SK On SK.UrunID = SM.UrunID\r\n        Inner Join IT01_KaliteKodlari KK On KK.KaliteID = SM.KaliteID\r\n        Inner Join IT06_Stoklar S On S.UrunTID = SK.UrunTID\r\n        Left Join IT04_SiparisD SD On SD.SiparisDetayID = ISNULL(SM.SiparisDetayID, SM.EtiketSiparisDetayID)\r\n        Left Join IT04_SiparisM SSM On SSM.SiparisID = SD.SiparisID\r\n        Left Outer Join IT01_Firmalar F On F.FirmaID = SSM.FirmaID\r\nGo\r\n"
+}

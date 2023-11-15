@@ -1,0 +1,12 @@
+{
+  "id": "c252c581-fa75-4f36-9c3a-9d942588c29c",
+  "prefix": "snp_Cursor",
+  "description": "Create Cursor",
+  "body": "Declare $csnp$ Cursor Local For\nSelect\nOpen $csnp$\nFetch Next From $csnp$ Into\nWhile @@FETCH_STATUS=0 Begin\n\t\n\tFetch Next From $csnp$ Into\nEnd\nClose $csnp$\nDeallocate $csnp$",
+  "placeholders": [
+    {
+      "name": "csnp",
+      "defaultValue": ""
+    }
+  ]
+}

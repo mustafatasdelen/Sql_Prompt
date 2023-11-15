@@ -1,0 +1,12 @@
+{
+  "id": "d57d5eb2-0b17-42d6-a88c-151448b9362c",
+  "prefix": "snp_at_df_AddUser",
+  "description": "",
+  "body": "ALTER TABLE $tablename$\r\n  ADD CONSTRAINT DF_$tablename$_AddUser\r\n  DEFAULT dbo.F15_GetActivePersonelID(-1) For AddUser;\r\nGo\r\n",
+  "placeholders": [
+    {
+      "name": "tablename",
+      "defaultValue": null
+    }
+  ]
+}

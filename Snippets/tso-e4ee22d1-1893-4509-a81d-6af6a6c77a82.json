@@ -1,0 +1,6 @@
+{
+  "id": "e4ee22d1-1893-4509-a81d-6af6a6c77a82",
+  "prefix": "tso",
+  "description": "tSQLt.SuppressOutput [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.SuppressOutput @command = '$CURSOR$';"
+}

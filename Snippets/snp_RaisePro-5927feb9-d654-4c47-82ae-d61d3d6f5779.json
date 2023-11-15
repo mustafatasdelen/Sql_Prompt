@@ -1,0 +1,6 @@
+{
+  "id": "5927feb9-d654-4c47-82ae-d61d3d6f5779",
+  "prefix": "snp_RaisePro",
+  "description": "",
+  "body": "Declare @msjText Varchar(Max), @msjText2 Varchar(Max) = 'ÖMER'\r\nSet @msjText = CONVERT(Varchar(20), 123345) \r\n+ ' Nolu Çalisan Isi Bekletmek Istiyor Musunuz?' \r\n+ CHAR(13) + 'EVET     : İŞİ BEKLET' \r\n+ CHAR(13) + 'HAYIR    : İŞİ BİTİR'\r\n+ CHAR(13) + '@msjText2: ' + @msjText2\r\n\r\nRaiserror('%s', 16, 1, @msjText)"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "faa861aa-e16c-48c6-9e1a-5d68e4289d2d",
+  "prefix": "snp_IndexEklemeTarihi",
+  "description": "",
+  "body": "select crdate, i.name, object_name(o.id)\r\nfrom sysindexes i\r\n   join sysobjects o ON o.id = i.id\r\n   Where i.name  Like '%IT01_NakliyeciSoforBilgileri%'\r\norder by crdate desc"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "50adfb6c-1ab0-4f7c-91bd-1168e825cde6",
+  "prefix": "snp_BaglantiyiKopar",
+  "description": "",
+  "body": "Alter Procedure SP15_BaglantiyiKopar @spid Int\r\nAs\r\nSet NoCount On\r\nBegin\r\n    /*\r\n\t\tYazan\t: guncel\r\n\t\tTarih\t: 18.06.2023\r\n\t\tAçıklama:\r\n\t*/\r\n    Begin Try\r\n\r\n        Declare @SQL NVarchar(Max)\r\n\r\n\t\t--Raiserror('<%d> parametresi alınamadı!',16,1, @spid)\r\n\r\n        Set @SQL = N'KILL ' + CAST(@spid As NVarchar(10));\r\n\r\n        Exec (@SQL);\r\n    End Try\r\n    Begin Catch\r\n        Declare @ITObjectName NVarchar(126);\r\n        Set @ITObjectName = OBJECT_NAME(@@PROCID);\r\n        Execute SP15_GenerateError @ITObjectName;\r\n    End Catch\r\nEnd\r\nGo\r\n\r\n"
+}

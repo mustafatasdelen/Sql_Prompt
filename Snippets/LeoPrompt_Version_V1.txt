@@ -1,0 +1,3 @@
+V1:(2021-09-20) guncel_mtasdelen
+  - snp_crsp_InterAktif: Yeni eklendi
+  - snp_Ex : hard code 'MUSTAFAUB' -> $MACHINE$	 yapıldı.

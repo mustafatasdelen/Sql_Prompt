@@ -1,0 +1,6 @@
+{
+  "id": "f5cde4b9-4042-4b04-bc7b-6100a7c09777",
+  "prefix": "idl",
+  "description": "IF EXISTS DROP: Login - [provided by @sqlity]",
+  "body": "IF SUSER_SID('$CURSOR$') IS NOT NULL DROP LOGIN ;"
+}

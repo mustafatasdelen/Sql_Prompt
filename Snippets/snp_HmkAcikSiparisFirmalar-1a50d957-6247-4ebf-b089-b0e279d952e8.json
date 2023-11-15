@@ -1,0 +1,6 @@
+{
+  "id": "1a50d957-6247-4ebf-b089-b0e279d952e8",
+  "prefix": "snp_HmkAcikSiparisFirmalar",
+  "description": "",
+  "body": "Select  Distinct USADHKT.FirmaId, USADHKT.FirmaKodu, USADHKT.FirmaAdi, 'SATIŞ SİPARİŞ' Tur, USD.UTSiparisDurumAdi Durum\r\nFrom    IT04_UTSiparisM USM \r\nINNER JOIN IT01_Firmalar USADHKT On USADHKT.FirmaID = USM.FirmaID\r\nINNER JOIN IT01_UTSiparisDurumlari USD On USD.UTSiparisDurumID = USM.UTSiparisDurumID\r\nWhere   USM.UTSiparisDurumID <> 990\r\nUnion\r\n--Select  Distinct SAHKSI.FirmaId, SAHKSI.FirmaKodu,  SAHKSI.FirmaAdi, 'HK AMBAR' Tur From PV06_StokAmbarHamKumas_SeriID SAHKSI\r\n--Union \r\nSelect Distinct SAO.firmaID, SAO.FirmaKodu, SAO.FirmaAdi, 'SATIN ALMA SİPARİŞ' Tur, SD.SiparisDurumAdi Durum From IT12_SiparisM SM\r\nINNER JOIN IT01_Firmalar SAO On SAO.FirmaID = SM.FirmaID\r\nINNER JOIN IT12_SiparisDurumlari SD On SD.SiparisDurumID = SM.DurumID\r\nWhere SM.DurumID = 0\r\nOrder By Tur, USADHKT.FirmaAdi\r\nGo\r\n"
+}

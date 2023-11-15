@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>araa</Title>
+      <Shortcut>araa</Shortcut>
+      <Description />
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[select o.name AS Object_Name,o.type_desc
+    FROM sys.sql_modules        m 
+        INNER JOIN sys.objects  o ON m.object_id=o.object_id
+    WHERE m.definition Like '%SP06_FaturaKurGuncelle%'
+    ORDER BY 2,1]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

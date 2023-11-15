@@ -1,0 +1,6 @@
+{
+  "id": "32635e7b-7b67-4c6a-9fcd-3ce32bca0988",
+  "prefix": "snp_HmkDepoGirisMuhaebeBilgilendirUpdate",
+  "description": "",
+  "body": "Select IrsaliyeNo, IrsaliyeTarihi,   * From  IT06_HareketFisM Where  DepoGirisID = 53847\r\n\r\nUpdate FM Set FM.IrsaliyeTarihi = dbo.F15_DatetimeToDate(GETDATE()), FM.IsITUpdate = FM.IsITUpdate, FM.IrsaliyeNo = FM.DepoGirisID\r\nFrom  IT06_HareketFisM FM Where  DepoGirisID = 53847\r\n"
+}

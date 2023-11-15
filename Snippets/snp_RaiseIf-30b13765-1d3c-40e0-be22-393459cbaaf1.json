@@ -1,0 +1,12 @@
+{
+  "id": "30b13765-1d3c-40e0-be22-393459cbaaf1",
+  "prefix": "snp_RaiseIf",
+  "description": "",
+  "body": "If $CONDITION$\r\nBegin\r\n\tRaiserror('<%d>', 16, 1, @$CURSOR$)\r\nEnd",
+  "placeholders": [
+    {
+      "name": "CONDITION",
+      "defaultValue": "1=1"
+    }
+  ]
+}

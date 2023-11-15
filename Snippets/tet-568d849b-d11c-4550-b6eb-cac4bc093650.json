@@ -1,0 +1,6 @@
+{
+  "id": "568d849b-d11c-4550-b6eb-cac4bc093650",
+  "prefix": "tet",
+  "description": "tSQLt.AssertEqualsTable [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.AssertEqualsTable '#Expected','#Actual';\n"
+}

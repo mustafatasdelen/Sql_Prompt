@@ -1,0 +1,6 @@
+{
+  "id": "83d9c2c7-d9cb-40a2-b5e5-8dbe40870669",
+  "prefix": "snp_RestoreFileTableEkBilgi",
+  "description": "",
+  "body": "\r\nFILESTREAM (DIRECTORY_NAME = 'FILEDATATEST');"
+}

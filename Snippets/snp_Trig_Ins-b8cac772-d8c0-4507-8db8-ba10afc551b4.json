@@ -1,0 +1,12 @@
+{
+  "id": "b8cac772-d8c0-4507-8db8-ba10afc551b4",
+  "prefix": "snp_Trig_Ins",
+  "description": "INSERT Trigger",
+  "body": "CREATE Trigger dbo.$TabloAdi$_Insert  ON [dbo].[$TabloAdi$]\nFOR INSERT\nAS\n\t/* Yazan  : $USER$\n\t\tTarih : $DATE$\n\t*/\nSET NOCOUNT ON\nBEGIN\n\tBEGIN TRY\n\tDeclare \n\t/* Cursor Variables*/\n\tDeclare c$TabloAdi$_Insert Cursor For\n\tSelect \n\tFrom\tinserted i\n\tOpen c$TabloAdi$_Insert\n\tFetch Next From c$TabloAdi$_Insert Into\n\tWhile @@Fetch_Status=0 Begin\n\n\t\tFetch Next From c$TabloAdi$_Insert Into\n\tEnd\n\tClose c$TabloAdi$_Insert\n\tDeallocate c$TabloAdi$_Insert\n\tEND TRY\n\tBEGIN CATCH\n\t\tDeclare @ITObjectName nvarchar(126)\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\n\t\tExecute SP15_GenerateError @ITObjectName\n\tEND CATCH\nEND\n",
+  "placeholders": [
+    {
+      "name": "TabloAdi",
+      "defaultValue": ""
+    }
+  ]
+}

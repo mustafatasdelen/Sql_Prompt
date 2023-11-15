@@ -1,0 +1,6 @@
+{
+  "id": "f01839d0-139d-47ca-8130-49517dd23703",
+  "prefix": "Snp_AlanNerede",
+  "description": "",
+  "body": "SELECT      c.name  AS 'ColumnName'\r\n            ,t.name AS 'TableName'\r\nFROM        sys.columns c\r\nJOIN        sys.tables  t   ON c.object_id = t.object_id\r\nWHERE       c.name LIKE '%$CURSOR$%'\r\nORDER BY    TableName\r\n            ,ColumnName;"
+}

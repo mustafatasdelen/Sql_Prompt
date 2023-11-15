@@ -1,0 +1,6 @@
+{
+  "id": "83bfe426-1bfb-422b-91af-821b969e614e",
+  "prefix": "tac",
+  "description": "tSQLt.ApplyConstraint [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.ApplyConstraint @TableName = '$CURSOR$', @ConstraintName = '';"
+}

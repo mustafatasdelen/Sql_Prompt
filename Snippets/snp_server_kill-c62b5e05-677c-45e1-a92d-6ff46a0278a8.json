@@ -1,0 +1,6 @@
+{
+  "id": "c62b5e05-677c-45e1-a92d-6ff46a0278a8",
+  "prefix": "snp_server_kill",
+  "description": "",
+  "body": "DECLARE @SQL AS VARCHAR(255)\nDECLARE @SPID AS SMALLINT\nDECLARE getSession CURSOR FOR\nSELECT spid FROM sys.sysprocesses WHERE loginame = 'PANO'\nOPEN getSession\nFETCH NEXT FROM getSession INTO @SPID\nWHILE @@FETCH_STATUS = 0 BEGIN\n\t    SET @SQL = 'Kill ' + CAST(@SPID AS VARCHAR(10)) + ';'\n\t\tEXEC (@SQL)\n\t\n    FETCH NEXT FROM getSession INTO @SPID\nEND \nCLOSE getSession\nDEALLOCATE getSession"
+}

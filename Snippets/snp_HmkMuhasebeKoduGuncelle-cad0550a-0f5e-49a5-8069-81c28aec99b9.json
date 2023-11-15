@@ -1,0 +1,6 @@
+{
+  "id": "cad0550a-0f5e-49a5-8069-81c28aec99b9",
+  "prefix": "snp_HmkMuhasebeKoduGuncelle",
+  "description": "",
+  "body": "Declare @UrunTID Int\r\nDeclare csnp Cursor Local For\r\nSelect S.UrunTID From IT06_Stoklar S Where S.StokTipID = 40 And S.MuhasebeUrunKodu Like '%KR0%'\r\nOpen csnp\r\nFetch Next From csnp Into @UrunTID\r\nWhile @@FETCH_STATUS=0 Begin\r\n\r\n\tExec PSP06_Stoklar_MuhasebeEntegrasyon  @UrunTID = @UrunTID\r\n\t\t\r\n\tFetch Next From csnp Into @UrunTID\r\nEnd\r\nClose csnp\r\nDeallocate csnp\r\n"
+}

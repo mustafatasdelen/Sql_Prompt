@@ -1,0 +1,6 @@
+{
+  "id": "79b0bccb-4526-485e-ac1d-4592a358dba6",
+  "prefix": "snp_TrendGuncelle",
+  "description": "",
+  "body": "Update IT06_Stoklar Set IsTrend = 1, IsITUpdate = IsITUpdate Where UrunTID = 13007"
+}

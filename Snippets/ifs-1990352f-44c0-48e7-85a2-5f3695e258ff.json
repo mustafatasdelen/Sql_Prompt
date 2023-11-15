@@ -1,0 +1,12 @@
+{
+  "id": "1990352f-44c0-48e7-85a2-5f3695e258ff",
+  "prefix": "ifs",
+  "description": "IF fragment",
+  "body": "IF $condition$\r\nBEGIN\r\n\tRaiserror('<%d>', 16, 1, @$CURSOR$)\r\nEND",
+  "placeholders": [
+    {
+      "name": "condition",
+      "defaultValue": "1 = 1"
+    }
+  ]
+}

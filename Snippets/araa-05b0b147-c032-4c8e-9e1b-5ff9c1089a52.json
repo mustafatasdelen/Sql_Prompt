@@ -1,0 +1,6 @@
+{
+  "id": "05b0b147-c032-4c8e-9e1b-5ff9c1089a52",
+  "prefix": "araa",
+  "description": "",
+  "body": "select o.name AS Object_Name,o.type_desc\n    FROM sys.sql_modules        m \n        INNER JOIN sys.objects  o ON m.object_id=o.object_id\n    WHERE m.definition Like '%$CURSOR$%' -- m.definition Like or '%%'\n    ORDER BY 2,1"
+}

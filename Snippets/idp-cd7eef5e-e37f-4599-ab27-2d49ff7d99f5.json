@@ -1,0 +1,6 @@
+{
+  "id": "cd7eef5e-e37f-4599-ab27-2d49ff7d99f5",
+  "prefix": "idp",
+  "description": "IF EXISTS DROP: Procedure -  [provided by @sqlity]",
+  "body": "IF OBJECT_ID('$CURSOR$') IS NOT NULL DROP PROCEDURE ;\nGO\n"
+}

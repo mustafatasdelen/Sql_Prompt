@@ -1,0 +1,6 @@
+{
+  "id": "02d6ff2f-d244-471a-8b50-6c2f5e8e4de8",
+  "prefix": "snp_NesneAlanlar",
+  "description": "",
+  "body": "Select OD.FieldCaption, OD.ShowSiraNo, * FROM IT15_ObjectsM OM\r\nINNER JOIN IT15_ObjectsD OD On OD.ITObjectID = OM.ITObjectID\r\nWhere Om.ITObjectName Like '%IT01_KantarPC%' And OD.Visible=1\r\nORDER BY  OD.ShowSiraNo "
+}

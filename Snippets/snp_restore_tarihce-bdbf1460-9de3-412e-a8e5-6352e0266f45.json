@@ -1,0 +1,6 @@
+{
+  "id": "bdbf1460-9de3-412e-a8e5-6352e0266f45",
+  "prefix": "snp_restore_tarihce",
+  "description": "",
+  "body": "Select      rh.destination_database_name [Database], Case When rh.restore_type = 'D' Then 'Database'\r\n                                                          When rh.restore_type = 'F' Then 'File'\r\n                                                          When rh.restore_type = 'I' Then 'Differential'\r\n                                                          When rh.restore_type = 'L' Then 'Log' Else rh.restore_type End [Restore Type],\r\n            rh.restore_date [Restore Date], bmf.physical_device_name Source, rf.destination_phys_name [Restore File], rh.user_name [Restored By]\r\nFrom        msdb.dbo.restorehistory rh\r\n            Inner Join msdb.dbo.backupset bs On rh.backup_set_id = bs.backup_set_id\r\n            Inner Join msdb.dbo.restorefile rf On rh.restore_history_id = rf.restore_history_id\r\n            Inner Join msdb.dbo.backupmediafamily bmf On bmf.media_set_id = bs.media_set_id\r\nWhere bs.database_name Like '%TEXTILE%'            \r\nOrder By    [Database] Desc, rh.restore_date Desc"
+}

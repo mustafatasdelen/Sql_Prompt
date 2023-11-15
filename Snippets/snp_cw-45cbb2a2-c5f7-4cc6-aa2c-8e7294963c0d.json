@@ -1,0 +1,6 @@
+{
+  "id": "45cbb2a2-c5f7-4cc6-aa2c-8e7294963c0d",
+  "prefix": "snp_cw",
+  "description": "",
+  "body": "CASE    \r\n     WHEN $CURSOR$ THEN     \r\n     ELSE    \r\nEND   "
+}

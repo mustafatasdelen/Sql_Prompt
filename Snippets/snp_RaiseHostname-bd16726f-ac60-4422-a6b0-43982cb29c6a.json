@@ -1,0 +1,6 @@
+{
+  "id": "bd16726f-ac60-4422-a6b0-43982cb29c6a",
+  "prefix": "snp_RaiseHostname",
+  "description": "",
+  "body": "If dbo.ITHostName() = 'GNC-NB124' Begin \t\t\t\t\t\r\n\tRaiserror('<%d>', 16, 1, @$CURSOR$)\r\nEnd"
+}

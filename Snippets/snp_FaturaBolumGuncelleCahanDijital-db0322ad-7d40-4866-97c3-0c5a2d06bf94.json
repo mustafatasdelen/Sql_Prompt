@@ -1,0 +1,6 @@
+{
+  "id": "db0322ad-7d40-4866-97c3-0c5a2d06bf94",
+  "prefix": "snp_FaturaBolumGuncelleCahanDijital",
+  "description": "",
+  "body": "Declare @UTSiparisID Int, @FaturaBolumID Int, @SiparisTurID Int, @MusSiparisGrupID Int\r\nDeclare csnp Cursor Local For\r\nSelect  USM.UTSiparisID, USM.MusteriSiparisGrupID, USM.SiparisTurID\r\nFrom    IT04_UTSiparisM USM\r\nWhere   USM.MusteriSiparisGrupID = 5 And USM.FaturaBolumID Is Null\r\nOpen csnp\r\nFetch Next From csnp\r\nInto @UTSiparisID, @MusSiparisGrupID, @SiparisTurID\r\nWhile @@FETCH_STATUS = 0 Begin\r\n\r\n    Select  @FaturaBolumID = FB.FaturaBolumID\r\n    From    IT15_System_FaturaBolumleri FB\r\n    Where   FB.SiparisTurID = @SiparisTurID And FB.MusSiparisGrupID = @MusSiparisGrupID\r\n\r\n    Update  IT04_UTSiparisM\r\n    Set     FaturaBolumID = @FaturaBolumID,\r\n            IsITUpdate = IsITUpdate\r\n    Where   UTSiparisID = @UTSiparisID\r\n\r\n    Fetch Next From csnp\r\n    Into @UTSiparisID, @MusSiparisGrupID, @SiparisTurID\r\nEnd\r\nClose csnp\r\nDeallocate csnp\r\n"
+}

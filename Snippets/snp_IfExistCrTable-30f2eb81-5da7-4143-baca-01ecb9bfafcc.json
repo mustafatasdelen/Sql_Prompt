@@ -1,0 +1,6 @@
+{
+  "id": "30f2eb81-5da7-4143-baca-01ecb9bfafcc",
+  "prefix": "snp_IfExistCrTable",
+  "description": "",
+  "body": "If Not Exists (Select   * From  sys.objects Where   object_id = OBJECT_ID(N'[dbo].$PASTE$'))\r\n\t$CURSOR$\r\nGo"
+}

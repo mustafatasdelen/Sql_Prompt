@@ -1,0 +1,12 @@
+{
+  "id": "a50c628e-8478-489c-8abb-c6ca2d24ed91",
+  "prefix": "snp_SpCursor",
+  "description": "Create SP CURSOR",
+  "body": "Create Procedure  [dbo].[$PSP_xx$] \nAs\nSet NoCount On\nBegin \n\t/*\n\t\tYazan\t: $USER$\n\t\tTarih\t: $DATE$\n\t\tAçıklama:\n\t*/\n    Begin Try\n\t\tDeclare\n\t\t/*Cursor variables*/\n\t\tDeclare c$PSP_xx$ Cursor Local For\n\t\tSelect\n\t\tFrom\n\t\tWhere\n\t\tOpen c$PSP_xx$\n\t\tFetch Next From c$PSP_xx$ Into\n\t\tWhile @@FETCH_STATUS=0 Begin\n\t\t\t\n\t\t\tFetch Next From c$PSP_xx$ Into\n\t\tEnd\n\t\tClose c$PSP_xx$\n\t\tDeallocate c$PSP_xx$\n        \n    End Try \n    Begin Catch\t\n        Declare @ITObjectName NVarchar(126);\n        Set @ITObjectName = OBJECT_NAME(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEnd\nGo\n\n\n",
+  "placeholders": [
+    {
+      "name": "PSP_xx",
+      "defaultValue": ""
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "73cddc76-1a73-4eaa-b02a-962bf96e1ddf",
+  "prefix": "tnc",
+  "description": "tSQLt.NewConnection [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.NewConnection @command='$CURSOR$';"
+}

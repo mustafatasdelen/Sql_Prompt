@@ -1,0 +1,6 @@
+{
+  "id": "d8877a8e-929b-4d25-8a04-c6212878ff77",
+  "prefix": "snp_FindVeriIslemi",
+  "description": "veri işlemi ve analiz ekranı için",
+  "body": "--veri işleminin yer aldığı ekranları bulmak için kullanılır.\r\nSelect S.ScreenID, S.ScreenCaption, OVI.* FROM  IT15_ObjectsM OM\r\nINNER JOIN IT15_ObjectsVeriIslemleri OVI On OVI.SPITObjectID = OM.ITObjectID\r\nLeft Outer Join IT15_Screens S On S.ITObjectID = OM.ITObjectID\r\nWhere OM.ITObjectName = 'SP03_URMFirmaMaliyetListeAktar' --OM.ITObjectID In (7623, 7621)\r\n\r\n--analiz ekranındaki nesneleri bulmak için kullanılır.\r\nSelect ADM.AnalizAdi,* \r\nFrom  IT15_AnalizDataD [ADD] \r\nInner JOIN  IT15_AnalizDataM ADM  On ADM.AnalizDataID = [ADD].AnalizDataID \r\nWhere [ADD].TSDatasetID =8064 --ITObjectID değeri yazılır"
+}

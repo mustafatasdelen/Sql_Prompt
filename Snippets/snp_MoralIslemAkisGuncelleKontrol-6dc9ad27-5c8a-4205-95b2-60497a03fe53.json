@@ -1,0 +1,6 @@
+{
+  "id": "6dc9ad27-5c8a-4205-95b2-60497a03fe53",
+  "prefix": "snp_MoralIslemAkisGuncelleKontrol",
+  "description": "",
+  "body": "Select Top 100  SMK.StokIslemAkisID, IAM.IslemAkisMID, IAM.SiparisIslemAkisMID, SIAM.SiparisIslemAkisAdi, IAM.IsletmeIslemAkisAdi, SMK.HamUrunTID, SMK.HamKumasUrunTID,\r\n        S.AnaUrunTID, S.RenkID, S.RenkMenseiID, RM.RenkMenseiKodu, S.NakisDesenID, S.NakisDesenVaryantID, *\r\nFrom    IT06_Stoklar_MamulKumas SMK\r\n        Inner Join IT06_Stoklar S On S.UrunTID = SMK.UrunTID\r\n        Inner Join IT06_StoklarIslemAkis SIA On SIA.StokIslemAkisID = SMK.StokIslemAkisID\r\n        Inner Join IT06_IslemAkisM IAM On IAM.IslemAkisMID = SIA.IslemAkisMID\r\n        Inner Join IT04_SiparisIslemAkisM SIAM On SIAM.SiparisIslemAkisMID = IAM.SiparisIslemAkisMID\r\n\t\tLEFT OUTER JOIN IT01_RenkMensei RM On RM.RenkMenseiID = S.RenkMenseiID\r\n--Where   SMK.UrunTID = 149868\r\n"
+}

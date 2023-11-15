@@ -1,0 +1,6 @@
+{
+  "id": "f12b43e1-2596-482e-8b17-63c2332c93f4",
+  "prefix": "snp_SP15_Export_ITObjects",
+  "description": "",
+  "body": "SP15_Export_ITObjects @ObjectList = '$CURSOR$', @KolonlariAktar = 1, @VeriIslemleriniAktar = 1, @FiltreVariantAktar = 1\r\n"
+}

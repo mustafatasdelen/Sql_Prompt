@@ -1,0 +1,6 @@
+{
+  "id": "c9d5b857-bbf2-4bb0-ac13-961e8ef00130",
+  "prefix": "snp_RaiserrorBilgilendirme",
+  "description": "",
+  "body": "Declare @Say Int = @@ROWCOUNT\r\nRaiserror('<%d> iş emri eklenmiştir.', 0, 1, @Say) With NoWait "
+}

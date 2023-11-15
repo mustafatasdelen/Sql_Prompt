@@ -1,0 +1,12 @@
+{
+  "id": "b0c462b9-be09-49a7-8a45-df6558657898",
+  "prefix": "csf",
+  "description": "Create scalar function",
+  "body": "CREATE FUNCTION $function_name$\r\n    (@parameter_name AS INT)\r\nRETURNS INT\r\n--WITH ENCRYPTION|SCHEMABINDING, ...\r\nAS\r\nBEGIN\r\n    RETURN $SELECTEDTEXT$$CURSOR$\r\nEND\r\nGO\r\n",
+  "placeholders": [
+    {
+      "name": "function_name",
+      "defaultValue": "[schema].[function_name]"
+    }
+  ]
+}

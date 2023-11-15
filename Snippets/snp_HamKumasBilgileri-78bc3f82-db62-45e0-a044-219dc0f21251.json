@@ -1,0 +1,6 @@
+{
+  "id": "78bc3f82-db62-45e0-a044-219dc0f21251",
+  "prefix": "snp_HamKumasBilgileri",
+  "description": "",
+  "body": "Inner Join IT06_Stoklar_HamKumas SHK On SHK.UrunTID = SKI.UrunTID\r\n        Inner Join IT06_Stoklar S On S.UrunTID = SHK.UrunTID\r\n        Inner Join IT01_Firmalar F On F.FirmaID = S.FirmaID\r\n        Inner Join IT01_KumasKaliteAdlari KKA On KKA.KumasKaliteID = SHK.KumasKaliteID"
+}

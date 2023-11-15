@@ -1,0 +1,6 @@
+{
+  "id": "33af9206-dfe1-431f-90d7-4e10127a4f67",
+  "prefix": "snp_rapor_kullanim_analiz",
+  "description": "",
+  "body": "Select      RL.RaporID, RT.RaporName, COUNT(*)\r\nFrom        IT20_RaporLog RL\r\nINNER JOIN IT20_RaporTanim RT On RT.RaporID = RL.RaporID\r\nWhere       DATEPART(Year, RL.AddDate) = '2021'\r\nGroup By    RL.RaporID, RT.RaporName\r\nOrder By    3 Desc"
+}

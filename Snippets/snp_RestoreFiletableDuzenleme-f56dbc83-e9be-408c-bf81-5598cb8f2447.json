@@ -1,0 +1,6 @@
+{
+  "id": "f56dbc83-e9be-408c-bf81-5598cb8f2447",
+  "prefix": "snp_RestoreFiletableDuzenleme",
+  "description": "",
+  "body": "Use master\r\nAlter Database LEOTEXTILE_TEST Set Single_User With Rollback Immediate\r\nRestore Database LEOTEXTILE_TEST\r\nFrom Disk = N'Z:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\Backup\\20230704_LEOTEXTILE.bak'\r\nWith File = 1, Move N'LEOTEXTILE_Data'\r\n               To N'F:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\Data\\LEOTEXTILE_TEST_Data.MDF',\r\n     Move N'LEOTEXTILE_Log'\r\n     To N'L:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\Data\\LEOTEXTILE_TEST_Log.LDF',\r\n     Move N'LEOTEXTILE_File'\r\n     To N'F:\\Program Files\\Microsoft SQL Server\\MSSQL14.MSSQLSERVER\\MSSQL\\Data\\LEOTEXTILE_TEST_File', NoUnload, Replace, Stats = 5,\r\n     FileStream (Directory_Name = 'FILEDATATEST');\r\nAlter Database LEOTEXTILE_TEST Set Multi_User\r\n--deneme\r\nGo"
+}

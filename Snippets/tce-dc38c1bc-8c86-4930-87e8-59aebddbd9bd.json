@@ -1,0 +1,6 @@
+{
+  "id": "dc38c1bc-8c86-4930-87e8-59aebddbd9bd",
+  "prefix": "tce",
+  "description": "tSQLt: create #Expected from #Actual [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "SELECT TOP(0) A.* INTO #Expected FROM #Actual A RIGHT JOIN #Actual X ON 1=0;\n"
+}

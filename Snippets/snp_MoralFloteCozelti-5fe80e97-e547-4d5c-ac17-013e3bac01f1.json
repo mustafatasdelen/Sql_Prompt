@@ -1,0 +1,6 @@
+{
+  "id": "5fe80e97-e547-4d5c-ac17-013e3bac01f1",
+  "prefix": "snp_MoralFloteCozelti",
+  "description": "",
+  "body": "SELECT * FROM IT01_FlotteOraniHesaplamaTipleri FOHT\r\n\r\nSELECT * FROM IT01_CozeltiHesapTipleri CHT\r\n\r\nSELECT UPT.FlotteOranHesapTipID, UPT.VarsCozeltiHesapTipID, P.ProsesAdi FROM IT01_Prosesler P\r\nINNER JOIN IT01_UretimPartiTipleri UPT On UPT.UretimPartiTipID = P.UretimPartiTipID\r\nWhere P.IsReceteli  =1"
+}

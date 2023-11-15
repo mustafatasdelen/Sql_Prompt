@@ -1,0 +1,6 @@
+{
+  "id": "7f6e029b-508f-4947-afbe-95febc60512b",
+  "prefix": "snp_RaiseHostnameDecimal",
+  "description": "",
+  "body": "Declare @xVarchar Varchar(18) = CONVERT(Varchar(18),@$CURSOR$)\r\nDeclare @HostName Varchar(100) Set @HostName = (Select HOST_NAME()) If @HostName = 'GNC-NB124' Begin Raiserror('<%s>',16,1, @xVarchar) End"
+}

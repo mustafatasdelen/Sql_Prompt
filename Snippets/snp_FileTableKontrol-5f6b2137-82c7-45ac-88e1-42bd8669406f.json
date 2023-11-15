@@ -1,0 +1,6 @@
+{
+  "id": "5f6b2137-82c7-45ac-88e1-42bd8669406f",
+  "prefix": "snp_FileTableKontrol",
+  "description": "",
+  "body": "Select  DB_NAME(database_id) DatabaseName, directory_name, * From   sys.database_filestream_options"
+}

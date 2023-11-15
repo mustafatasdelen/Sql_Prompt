@@ -1,0 +1,6 @@
+{
+  "id": "2dd579d2-3109-4b97-983f-102f8cc78138",
+  "prefix": "tnt",
+  "description": "tSQLt.NewTestClass [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]",
+  "body": "EXEC tSQLt.NewTestClass '$CURSOR$';\nGO\nCREATE PROCEDURE .[test ]\nAS\nBEGIN\n\nEND;\nGO\n"
+}

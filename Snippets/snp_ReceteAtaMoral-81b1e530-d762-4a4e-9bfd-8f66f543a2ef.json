@@ -1,0 +1,6 @@
+{
+  "id": "81b1e530-d762-4a4e-9bfd-8f66f543a2ef",
+  "prefix": "snp_ReceteAtaMoral",
+  "description": "",
+  "body": "Update  UP\r\nSet     UP.ReceteAtandi = 1, UP.IsITUpdate = UP.IsITUpdate\r\nFrom    IT05_UretimPartileri UP\r\nWhere   UP.UretimPartiNo Like '%JB-16%'"
+}

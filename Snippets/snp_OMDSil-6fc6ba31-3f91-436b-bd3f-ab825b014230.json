@@ -1,0 +1,6 @@
+{
+  "id": "6fc6ba31-3f91-436b-bd3f-ab825b014230",
+  "prefix": "snp_OMDSil",
+  "description": "",
+  "body": "Select  * From  IT15_ObjectsM OD Where  OD.ITObjectName Like '%$PASTE$%'\r\n\r\nDeclare @ITObjectID Int = 15939\r\n\r\n\r\ndelete From  IT15_ObjectsD Where ITObjectID = @ITObjectID\r\ndelete From  IT15_ObjectsM Where  ITObjectID = @ITObjectID"
+}

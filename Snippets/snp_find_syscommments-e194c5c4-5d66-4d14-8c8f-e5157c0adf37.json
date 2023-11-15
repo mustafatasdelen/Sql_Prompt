@@ -1,0 +1,6 @@
+{
+  "id": "e194c5c4-5d66-4d14-8c8f-e5157c0adf37",
+  "prefix": "snp_find_syscommments",
+  "description": "find SysCommnets",
+  "body": "SELECT DISTINCT so.name , so.type \nFROM sys.syscomments sc\nINNER JOIN sys.objects so ON sc.id = so.object_id\nWHERE \n-- so.type='P' And\nsc.text Like '%%' "
+}

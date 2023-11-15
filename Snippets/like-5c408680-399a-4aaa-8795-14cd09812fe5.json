@@ -1,0 +1,6 @@
+{
+  "id": "5c408680-399a-4aaa-8795-14cd09812fe5",
+  "prefix": "like",
+  "description": "",
+  "body": "Like '%$CURSOR$%'"
+}
