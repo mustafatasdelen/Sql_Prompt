@@ -1,0 +1,6 @@
+{
+  "id": "94eea353-cba5-49a6-87ef-d4a06bed4695",
+  "prefix": "snp_utnUretim",
+  "description": "",
+  "body": "Select s.StokTipID,PRD.IsOtoGirenFis, SM.UTSiparisID,PRD.IsEmriNo, P.ProsesID, PD.PRMDDurumAdi, P.ProsesAdi, PRD.UrtMt,PRD.UrtAd, g.Miktar_Mt GCMMiktar_Mt, g.Miktar_Ad GCMMiktar_Ad, PRD.* FROM IT05_PartiRotaM PRM\nINNER JOIN IT04_SiparisD SD On SD.SiparisDetayID = PRM.SiparisDetayID\nINNER JOIN IT04_SiparisM SM On SM.SiparisID = SD.SiparisID\nINNER Join IT05_PartiRotaD PRD On PRD.IsEmriNo = PRM.IsEmriNo\nINNER JOIN IT01_Prosesler P On P.ProsesID = PRD.ProsesID\nINNER JOIN IT15_PRMDDurumlari PD On PD.PRMDDurumID = PRD.Durumu\nINNER JOIN IT06_Stoklar S On S.UrunTID = PRM.CikanUrunTID\nouter Apply (SELECT SUM( GCM.Miktar_Mt) Miktar_Mt, SUM(GCM.Miktar_Ad) Miktar_Ad From IT07_GerCikanMalzeme GCM Where GCM.ProsesID = PRD.ProsesID And GCM.IsEmriNo = PRM.IsEmriNo) g\nWhere SM.UTSiparisID In ( 41652,41681,41693,50031) And S.StokTipID = 59\n\nOrder By SM.UTSiparisID, PRD.IsEmriNo, PRD.RotaSiraNo\n\n\n"
+}

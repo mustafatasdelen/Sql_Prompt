@@ -1,0 +1,6 @@
+{
+  "id": "9460d83d-ffe0-434a-9e96-96c1cd466c01",
+  "prefix": "JobProcSearch",
+  "description": "",
+  "body": "\n-- search the jobs for a specific text\n\nSELECT SERVERPROPERTY('SERVERNAME') as [InstanceName],\n\n    j.job_id,\n\n    j.name,\n\n    js.step_id,\n\n    js.command,\n\n    j.enabled\n\nFROM    msdb.dbo.sysjobs j\n\nJOIN    msdb.dbo.sysjobsteps js\n\n    ON  js.job_id = j.job_id\n\nWHERE   js.command LIKE '%sendmail%' -- replace keyword with the word or stored proc that you are searching for\n"
+}

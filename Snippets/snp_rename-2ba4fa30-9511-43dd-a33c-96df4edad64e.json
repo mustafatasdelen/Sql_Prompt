@@ -1,0 +1,6 @@
+{
+  "id": "2ba4fa30-9511-43dd-a33c-96df4edad64e",
+  "prefix": "snp_rename",
+  "description": "",
+  "body": "Select concat ('DROP ' , Case When OM.ITType = 2 Then ' VIEW ' When OM.ITType = 3 Then ' PROCEDURE ' End,REPLACE(OM.ITObjectName,'_New',''),' exec sp_rename ','''' ,'dbo.',OM.ITObjectName,'''' , ' , ','''' ,REPLACE(OM.ITObjectName,'_New',''),'''' ) xx,\n REPLACE(OM.ITObjectName,'_New','') ITObjectName,OM.ITType \nFrom  IT15_ObjectsM OM \nWhere  OM.ITObjectName\n IN\n(\nN'PV60_TPulseCikan_GostergeValue_KuruAcma_New',\nN'PV60_TPulseCikan_GostergeValue_Baski_New',\nN'PV60_Giris_TerbiyeStandart_PlanID_New',\nN'PV60_Giris_TerbiyeStandart_New',\nN'PV60_Giris_KuruAcma_New',\nN'PV60_GerCikanMalzeme_Gecmis_New')"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "64cd651d-f15d-4f04-a327-78d71822714b",
+  "prefix": "snp_RFID_Tag_Al",
+  "description": "",
+  "body": "Declare @SPRFIDTag1 varchar(24) ,     @prefix varchar(9) = '600601200'\n\nSet @SPRFIDTag1 = '10'\n\nSet @SPRFIDTag1 = Upper(@SPRFIDTag1)\n\nSelect  @prefix + Replicate(0, 15 - Len(@SPRFIDTag1)) + @SPRFIDTag1"
+}

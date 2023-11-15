@@ -1,0 +1,6 @@
+{
+  "id": "123d2092-35b0-4365-a6c0-57c15a2fb9d6",
+  "prefix": "snp_Proc_Interactive",
+  "description": "",
+  "body": "Create Procedure $CURSOR$ (\n\n/* Interaktif */\n@Cevap tinyint , @SoruNo smallint Output , @msjText varchar(200) Output , @Sonuc tinyint Output)\nAs\nSet NoCount On\nBegin\n    Begin Try\n        Declare @IslemOk tinyint \n\n        Set @IslemOk = 0\n        If IsNull(@SoruNo,-1) = -1 Begin\n            Set @msjText = 'İŞİ BAŞLATMAK İSTEDİĞİNİZDEN EMİN MİSİNİZ?'\n            Set @SoruNo = 10\n            Set @Sonuc = 1\n        End Else\n\t\tIf @SoruNo = 10 Begin\n            If @Cevap = 0 Begin\n\t\t\t\tSet @IslemOk = 1\n            End Else Begin\n                Set @Sonuc = 0\n            End\n        End \n\t\tIf @IslemOk = 1 Begin\n\t\t\n\t\t\t\t/* TO-DO */\n\n            Set @Sonuc = 0\n        End\n    End Try \n    Begin Catch\t\n        Declare @ITObjectName nVarchar(126)\n        Set @ITObjectName = Object_Name(@@PROCID)\n        Execute SP15_GenerateError @ITObjectName\n    End Catch\nEnd\nGo\n"
+}

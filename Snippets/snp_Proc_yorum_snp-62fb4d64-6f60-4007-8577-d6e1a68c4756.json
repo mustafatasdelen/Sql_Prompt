@@ -1,0 +1,6 @@
+{
+  "id": "62fb4d64-6f60-4007-8577-d6e1a68c4756",
+  "prefix": "snp_Proc_yorum_snp",
+  "description": "",
+  "body": "/*\n\tYazan : $USER$\n\tTarih : $DATE$ $TIME$\n\tAmacı : $CURSOR$\n*/"
+}

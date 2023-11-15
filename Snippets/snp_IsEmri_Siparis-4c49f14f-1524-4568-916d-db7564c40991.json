@@ -1,0 +1,6 @@
+{
+  "id": "4c49f14f-1524-4568-916d-db7564c40991",
+  "prefix": "snp_IsEmri_Siparis",
+  "description": "",
+  "body": "Select  PRM.IsEmriNo, SD.SiparisDetayID, SD.SiparisID, SM.FirmaID, F.FirmaKodu\nFrom    IT05_PartiRotaM PRM\n        Inner Join IT05_PlanCikanM PCM On PCM.IsEmriNo = PRM.IsEmriNo\n        Inner Join IT04_SiparisParti SP On SP.PartiID = PRM.PartiID\n        Inner Join IT04_SiparisD SD On SD.SiparisDetayID = SP.SiparisDetayID\n        Inner Join IT04_SiparisM SM On SM.SiparisID = SD.SiparisID\n        Inner Join IT01_Firmalar F On F.FirmaID = SM.FirmaID\nWhere   PRM.IsEmriNo = $CURSOR$"
+}

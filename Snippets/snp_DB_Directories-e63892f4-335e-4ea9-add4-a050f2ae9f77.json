@@ -1,0 +1,6 @@
+{
+  "id": "e63892f4-335e-4ea9-add4-a050f2ae9f77",
+  "prefix": "snp_DB_Directories",
+  "description": "",
+  "body": "SELECT \r\n\r\n    mdf.database_id, \r\n\r\n    mdf.name, \r\n\r\n    mdf.physical_name as data_file, \r\n\r\n    ldf.physical_name as log_file, \r\n\r\n    db_size = CAST((mdf.size * 8.0)/1024 AS DECIMAL(8,2)), \r\n\r\n    log_size = CAST((ldf.size * 8.0 / 1024) AS DECIMAL(8,2))\r\n\r\nFROM (SELECT * FROM sys.master_files WHERE type_desc = 'ROWS' ) mdf\r\n\r\nJOIN (SELECT * FROM sys.master_files WHERE type_desc = 'LOG' ) ldf\r\n\r\nON mdf.database_id = ldf.database_id"
+}

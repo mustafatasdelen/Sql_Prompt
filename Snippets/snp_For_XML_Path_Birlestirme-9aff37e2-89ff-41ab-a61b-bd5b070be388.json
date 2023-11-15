@@ -1,0 +1,6 @@
+{
+  "id": "9aff37e2-89ff-41ab-a61b-bd5b070be388",
+  "prefix": "snp_For_XML_Path_Birlestirme",
+  "description": "",
+  "body": "Select Top 1 @MakaraUrunTID = S.UrunTID\nFrom    IT06_Stoklar S\n        Cross Apply (Select Stuff((\t\n\t\t\t\t\t\t\t\tSelect   Concat(';', SH.HamUrunTID, '-', SH.TaharID, '-', Convert(int, SH.Siklik_TelSayisi))\n\t\t\t\t\t\t\t\tFrom     IT06_StokHammadde SH\n\t\t\t\t\t\t\t\tWhere    SH.UrunTID = S.UrunTID\n\t\t\t\t\t\t\t\tOrder By SH.Siklik_TelSayisi Desc, SH.HamUrunTID Asc\n\t\t\t\t\t\t\t\tFor Xml Path('')), 1, 1, '') As SHash) SHMD\n"
+}

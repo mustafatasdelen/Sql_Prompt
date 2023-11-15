@@ -1,0 +1,6 @@
+{
+  "id": "964bd4df-96ce-40c7-b995-b5478ccd0d8f",
+  "prefix": "alannerede",
+  "description": "",
+  "body": "SELECT      c.name  AS 'ColumnName'\n            ,t.name AS 'TableName'\nFROM        sys.columns c\nJOIN        sys.tables  t   ON c.object_id = t.object_id\nWHERE       c.name LIKE '%MyName%'\nORDER BY    TableName\n            ,ColumnName;"
+}

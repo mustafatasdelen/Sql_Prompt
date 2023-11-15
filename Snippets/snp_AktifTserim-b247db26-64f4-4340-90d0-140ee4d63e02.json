@@ -1,0 +1,6 @@
+{
+  "id": "b247db26-64f4-4340-90d0-140ee4d63e02",
+  "prefix": "snp_AktifTserim",
+  "description": "",
+  "body": "\t\tSelect TSM.FirmaKaliteparamID, * FROM  IT08_TSeriM TSM Where TSM.MakinaID   =5829"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "cd6ffb26-c78d-4389-8fd9-10125e47b415",
+  "prefix": "atac",
+  "description": "Modify column",
+  "body": "ALTER TABLE $table_name$ ALTER COLUMN ",
+  "placeholders": [
+    {
+      "name": "table_name",
+      "defaultValue": "[schema].[table_name]"
+    }
+  ]
+}

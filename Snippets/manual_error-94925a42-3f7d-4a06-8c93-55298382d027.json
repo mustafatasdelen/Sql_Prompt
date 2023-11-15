@@ -1,0 +1,6 @@
+{
+  "id": "94925a42-3f7d-4a06-8c93-55298382d027",
+  "prefix": "manual_error",
+  "description": "",
+  "body": "Begin \tSet @msj7 = CONVERT(varchar(20), @ToplamDara)-- @KantarKg (132) - ISNULL(@ToplamDara,0)(104.6)  =27.4\n\t\t\t\t\t\tRAISERROR(' net miktar kg <%s>',16,1,  @msj7)\n\t\t\t\t\tend "
+}

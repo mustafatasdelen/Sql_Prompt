@@ -1,0 +1,6 @@
+{
+  "id": "5d9875c5-54fd-4a0a-a7d3-ced8b5fe75b2",
+  "prefix": "ARAAAAAA",
+  "description": "",
+  "body": "select o.name AS Object_Name,o.type_desc\n    FROM sys.sql_modules        m \n        INNER JOIN sys.objects  o ON m.object_id=o.object_id\n    WHERE m.definition Like '%DD%' --or deneme  -- deneme 2\n    ORDER BY 2,1"
+}

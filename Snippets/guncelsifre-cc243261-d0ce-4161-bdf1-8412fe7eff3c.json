@@ -1,0 +1,6 @@
+{
+  "id": "cc243261-d0ce-4161-bdf1-8412fe7eff3c",
+  "prefix": "guncelsifre",
+  "description": "",
+  "body": "SELECT K.Password FROM  IT15_Kullanicilar K Where K.KullaniciID = 1"
+}

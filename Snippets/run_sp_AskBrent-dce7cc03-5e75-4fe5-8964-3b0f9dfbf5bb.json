@@ -1,0 +1,6 @@
+{
+  "id": "dce7cc03-5e75-4fe5-8964-3b0f9dfbf5bb",
+  "prefix": "run_sp_AskBrent",
+  "description": "",
+  "body": "Set Ansi_Padding, Ansi_Warnings, ArithAbort, Concat_Null_Yields_Null On;\n\nSet Quoted_Identifier, Ansi_Nulls, Numeric_RoundAbort Off;\n\nGo\nExec sp_AskBrent\n\nGo\n\nExec dbo.sp_Blitz\n\nGo\n\nExec sp_BlitzIndex"
+}

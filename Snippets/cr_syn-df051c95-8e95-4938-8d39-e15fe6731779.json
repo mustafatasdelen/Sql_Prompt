@@ -1,0 +1,6 @@
+{
+  "id": "df051c95-8e95-4938-8d39-e15fe6731779",
+  "prefix": "cr_syn",
+  "description": "CREATE SYNONYM",
+  "body": "CREATE SYNONYM [dbo].[ITTEXTILE_StokTipleri] FOR [ITTEXTILE].[dbo].[IT01_StokTipleri]\n\n"
+}

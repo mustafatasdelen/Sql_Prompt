@@ -1,0 +1,6 @@
+{
+  "id": "460bbd51-d049-4791-9bdc-d52ad81870f2",
+  "prefix": "LAGKullanim",
+  "description": "",
+  "body": "SELECT Nxt_Price, Prv_Price \nFROM\n    (Select price, Lag(price) over (order by date desc, time desc) Nxt_Price,\n    Lead(price) over (order by date desc, time desc) Prv_Price\n    from ITEMS) AS InnerQuery\n Where Nxt_Price <> price"
+}

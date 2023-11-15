@@ -1,0 +1,6 @@
+{
+  "id": "a5e90ff0-5b4a-43ea-89e0-f5aea1851b11",
+  "prefix": "snp_ScreenFind",
+  "description": "",
+  "body": "\tSELECT ITObjectID,* FROM dbo.IT15_ObjectsM WHERE ITObjectName = 'SP03_Numune_URMIns'\n\t\n\tSELECT * FROM dbo.IT15_ObjectsVeriIslemleri WHERE SPITObjectID = 7661\n\n\tSELECT S.ScreenID,S.ScreenName,* FROM  dbo.IT15_ObjectsM OM\n\tINNER JOIN dbo.IT15_Screens S ON S.ITObjectID = OM.ITObjectID\n\t WHERE OM.ITObjectID IN (7610,7621,7692,8084,11419)"
+}

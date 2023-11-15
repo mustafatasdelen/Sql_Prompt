@@ -1,0 +1,6 @@
+{
+  "id": "ec4df7fd-cdb9-4384-b730-e5a7f2c6efac",
+  "prefix": "snp_urttolerans",
+  "description": "",
+  "body": "\nUpdate RD \nSet RD.UrtMiktarTolerans =15,RD.IsITUpdate = RD.IsITUpdate\nFrom IT05_RotaD RD\nWhere ProsesID = 128\n\n\nUpdate PRD \nSet PRD.UrtMiktarTolerans = 15,PRD.IsITUpdate = PRD.IsITUpdate\nFrom \nIT05_PartiRotaD PRD \nWhere ProsesID = 128\n\n\nUpdate PM \nSet PM.UrtMiktarTolerans = 15,PM.IsITUpdate = PM.IsITUpdate\nFrom \nIT05_PartiRotaD PRD \nINNER JOIN IT05_PlanMakina PM On PM.PlanID = PRD.PlanID\nWhere ProsesID = 128"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "6edf91eb-ccab-4fe2-b399-819be8201a7c",
+  "prefix": "atbl",
+  "description": "ALTER TABLE fragment",
+  "body": "ALTER TABLE "
+}

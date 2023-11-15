@@ -1,0 +1,6 @@
+{
+  "id": "ad4bcbd6-2828-473a-aafe-cae98338318c",
+  "prefix": "xpfd",
+  "description": "Retrieve free space on all fixed drives",
+  "body": "EXEC master..xp_fixeddrives"
+}

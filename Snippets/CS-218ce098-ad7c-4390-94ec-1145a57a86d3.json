@@ -1,0 +1,6 @@
+{
+  "id": "218ce098-ad7c-4390-94ec-1145a57a86d3",
+  "prefix": "CS",
+  "description": "",
+  "body": "\n/****** Object:  Sequence [dbo].[S01_RenkID]    Script Date: 6.05.2020 10:17:47 ******/\nCreate Sequence [dbo].[S01_RenkID] \n As [int]\n Start With 8752\n Increment By 1\n MinValue -2147483648\n MaxValue 2147483647\n Cache \nGo"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "b7adcf07-9c36-4832-9d7a-67e6ce97a04b",
+  "prefix": "Snp_ALLObjects",
+  "description": "",
+  "body": "select definition\n\nfrom sys.sql_modules\n\n--inner join sys.triggers\n\n--  on sql_modules.object_id = triggers.object_id\n\n--  where definition like '%IT60%'"
+}

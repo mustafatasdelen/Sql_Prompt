@@ -1,0 +1,6 @@
+{
+  "id": "ddbb217b-ce54-4888-a284-1df025a1fc35",
+  "prefix": "snp_VeriGoster_orgatexToLeobox",
+  "description": "",
+  "body": "Select  M.MachineNo,D.Machine, MA.Type,MA.AlarmNo, MS.Machine,M.MachineNo,M.MachineName,M.MGroupNo,D.Dyelot,MS.RunState,T.TreatmentNo,T.TreatmentName,MA.AlarmNo,\r\nMGA.Name,MGA.ShortName, MS.* From   Machines M\r\nLeft Outer Join  MachineStatus MS On M.MachineNo = MS.Machine\r\nLeft Outer Join  Dyelots D On D.DyelotRefNo = MS.DyelotRefNo And D.Machine = M.MachineNo\r\nLeft Outer Join   Treatments T On T.TreatmentNo = MS.TreatmentNo\r\nLeft Outer Join  MachineAlarm MA On  MS.Alarm = MA.AlarmNo  And MS.DyelotRefNo = MA.DyelotRefNo And MA.Machines_MachineNo = M.MachineNo\r\nLEFT OUTER JOIN  MachGrpAlarm MGA On  MGA.MachGrp_MGroupNo = M .MGroupNo  And  MGA.TypeConfID = MA.AlarmNo\r\nWhere M.MachineType <> 2 And M.MachineName  Not In ('PADBATCH', 'HAVUZ')\r\nOrder By M.MachineNo asc  \r\n\r\n/*\r\ntürkçe run state tablosu olacak \r\ntürkçe alarm grup tablosu olacak\r\n*/\r\n"
+}

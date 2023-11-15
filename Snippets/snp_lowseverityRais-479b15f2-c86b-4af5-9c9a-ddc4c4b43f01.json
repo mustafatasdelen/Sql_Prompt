@@ -1,0 +1,6 @@
+{
+  "id": "479b15f2-c86b-4af5-9c9a-ddc4c4b43f01",
+  "prefix": "snp_lowseverityRais",
+  "description": "",
+  "body": "             Raiserror('Mamul tip kodlarında en bilgisi değeri bulunmuyor. %s varsayılan değerini fiziksel olarak ölçülen değerle değiştirmeyi unutmayınız..' ,0,1,@chr)    "
+}

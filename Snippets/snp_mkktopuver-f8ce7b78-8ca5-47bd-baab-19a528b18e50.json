@@ -1,0 +1,6 @@
+{
+  "id": "f8ce7b78-8ca5-47bd-baab-19a528b18e50",
+  "prefix": "snp_mkktopuver",
+  "description": "",
+  "body": "Select  P.ProsesAdi, SA.SeriID\nFrom    IT06_StokAmbar SA\n        Inner Join IT01_Prosesler P On P.GirenAmbarID = SA.AmbarID\nWhere   P.ProsesID In (100, 101)\n        And Not Exists (Select  GMM.SeriID From IT07_GerGirenMalzemeD GGMD Inner Join IT07_GerGirenMalzemeM GMM On GMM.GirenID = GGMD.GirenID Where GMM.SeriID = SA.SeriID)\n        And Not Exists (Select  SeriID From IT08_TSeriM TSM Where   TSM.GirenSeriID = SA.SeriID)\n\n\nSelect PRD.IsEmriNo,PRMMK.SeriID,SA.Miktar_Mt, * FROM  IT05_PartiRotaM PRM\nINNER JOIN IT05_PartiRotaM_MamulKumas PRMMK On PRMMK.IsEmriNo = PRM.IsEmriNo\nINNER JOIN IT05_PartiRotaD PRD On PRD.IsEmriNo = PRM.IsEmriNo\nINNER JOIN IT01_Prosesler PP On PP.ProsesID = PRD.ProsesID\nINNER JOIN IT06_StokAmbar SA On SA.SeriID = PRMMK.SeriID And SA.AmbarID = PP.GirenAmbarID\nWhere PRD.ProsesID = 100 And PRD.Durumu  =0 And Not Exists(SELECT * FROM  IT08_TSeriM TSM Where TSM.IsEmriNo = PRM.IsEmriNo)"
+}

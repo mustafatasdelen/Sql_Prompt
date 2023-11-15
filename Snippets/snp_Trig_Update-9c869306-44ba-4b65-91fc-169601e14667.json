@@ -1,0 +1,12 @@
+{
+  "id": "9c869306-44ba-4b65-91fc-169601e14667",
+  "prefix": "snp_Trig_Update",
+  "description": "Update Trigger",
+  "body": "CREATE Trigger dbo.$TabloAdi$_Update  ON [dbo].[$TabloAdi$]\nFOR Update\nAS\n\t/* Yazan  : $USER$\n\t\tTarih : $DATE$\n\t*/\nSET NOCOUNT ON\nBEGIN\n\tBEGIN TRY\n\tDeclare \n\t/* Cursor Variables*/\n\tDeclare c$TabloAdi$_Update Cursor For\n\tSelect \n\tFrom\tinserted i \n\tINNER JOIN deleted d On i. = d.\n\tOpen c$TabloAdi$_Update\n\tFetch Next From c$TabloAdi$_Update Into\n\tWhile @@Fetch_Status=0 Begin\n\n\t\tFetch Next From c$TabloAdi$_Update Into\n\tEnd\n\tClose c$TabloAdi$_Update\n\tDeallocate c$TabloAdi$_Update\n\tEND TRY\n\tBEGIN CATCH\n\t\tDeclare @ITObjectName nvarchar(126)\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\n\t\tExecute SP15_GenerateError @ITObjectName\n\tEND CATCH\nEND\n",
+  "placeholders": [
+    {
+      "name": "TabloAdi",
+      "defaultValue": ""
+    }
+  ]
+}

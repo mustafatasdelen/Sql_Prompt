@@ -1,0 +1,6 @@
+{
+  "id": "6ce27766-2cd9-46f2-bd4b-c44012aec6cb",
+  "prefix": "rais_SistemCalismasi",
+  "description": "",
+  "body": "Raiserror('Sistemde çalışma var lütfen 1 dk sonra tekrar deneyiniz. %d',16,1, $CURSOR$)"
+}

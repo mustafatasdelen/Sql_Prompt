@@ -1,0 +1,6 @@
+{
+  "id": "7103e09d-8a55-4778-aebc-7d8c99648120",
+  "prefix": "LommVardiyaDegisim",
+  "description": "",
+  "body": "ALTER PROCEDURE PSP99_VardiyaDegisim\n(@Port int, @IsMakina int, @IsIsletme int)\nAs\nSET NOCOUNT ON\nSET ANSI_WARNINGS OFF\n \nBegin\n\tif @IsMakina = 1 begin\n\t\tINSERT CounterMaster(Zaman, Tezgah, Cause, Counter, State) \n\t\tSelect TOP 1 getdate(), tezgah, 254, counter, State\n\t\tfrom CounterMaster \n\t\tWhere Tezgah=@Port \n\t\tOrder By Zaman Desc\n\tend else \n\tif @IsIsletme = 1 begin\n\t\tDeclare cVardiyaDegisim Cursor For\n\t\tSelect\tPort\n\t\tFrom\tIT99_MakineotomasyonParametreleri MOP\n\t\tWhere\tMOP.Connected=1\n\t\tOrder By MakinaID DESC\n\t\tOpen cVardiyaDegisim\n\t\tFetch Next  From cVardiyaDegisim Into\n\t\t@Port\n\t\twhile @@fetch_Status=0 Begin\n\t\t\tINSERT Counter(Zaman, Tezgah, Cause, Counter, State)\n\t\t\tSelect TOP 1 getdate(), tezgah, 254, Counter, State \n\t\t\tFrom Counter \n\t\t\tWhere Tezgah=@Port \n\t\t\tOrder By Zaman Desc\n\t\t\tFetch Next  From cVardiyaDegisim Into\n\t\t\t@Port\n\t\tend\n\t\tClose cVardiyaDegisim\n\t\tDeallocate cVardiyaDegisim\n\tend\n\t\nEnd\n\nGO\n"
+}

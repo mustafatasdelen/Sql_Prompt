@@ -1,0 +1,6 @@
+{
+  "id": "70711ac8-ae23-4770-b863-9e637f6f5073",
+  "prefix": "snp_PaketAkisCheck",
+  "description": "",
+  "body": "Select Distinct S.IslemAkisMID From  IT290_Stoklar_KonfPaket SKP\nInner Join IT06_Stoklar S On S.UrunTID = SKP.UrunTID\nINNER JOIN IT22_KonfModel KM On KM.KonfModelID = S.KonfModelID\nCross Apply (Select SH.UrunTID ,COUNT(SH.StokHammaddeID) say From  IT06_StokHammadde SH \nWhere SH.UrunTID = S.UrunTID \nGroup By SH.UrunTID \nHaving COUNT(SH.StokHammaddeID)= 1\n) D\nWhere KM.IsAdetliSatis  =1 And KM.KonfOnayDurumID = 1 And S.IslemAkisMID = 183"
+}

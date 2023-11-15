@@ -1,0 +1,6 @@
+{
+  "id": "8dfc5a8f-7832-4e5e-9bd5-b3af35bf6e02",
+  "prefix": "RaisHost",
+  "description": "",
+  "body": "If 'GNC-NB-2204' = dbo.ITHostName() Begin \r\n\tRaiserror('%d',16,1,@KompozisyonYogunlukNumarasi)\r\n\tEND"
+}

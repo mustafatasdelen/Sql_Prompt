@@ -1,0 +1,16 @@
+{
+  "id": "8b65aa30-15fa-49e5-859d-3af66b7d28bb",
+  "prefix": "snp_Create_Trigger",
+  "description": "",
+  "body": "/*Yazan : $USER$\n   Tarih: $DATE$\n*/\nCreate Trigger $TABLOADI$_$TRIG_FUNC$ On $TABLOADI$\n    For $TRIG_FUNC$\nAs\nSet NoCount On\nBEGIN \n    Begin Try\n    \tDeclare\n\t\t/*Cursor Variables*/\n\t\tDeclare c$TABLOADI$ Cursor Local For\n\t\t\tSelect\t \n\t\t\tFrom\t$TRIG_FUNC$ed i\n\t\tOpen c$TABLOADI$\n\t\tFetch Next From c$TABLOADI$ Into \n\t\tWhile @@FETCH_STATUS = 0 Begin\n\t\t\t\t\t\n\t\t\n\t\t\tFetch Next From c$TABLOADI$ Into \n\t\tEnd\n\t\tClose c$TABLOADI$\n\t\tDeallocate c$TABLOADI$\n\n    End Try\n    Begin Catch\n        Declare @ITObjectName nVarchar(126);\n        Set @ITObjectName = Object_Name(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEND\nGo\n",
+  "placeholders": [
+    {
+      "name": "TABLOADI",
+      "defaultValue": ""
+    },
+    {
+      "name": "TRIG_FUNC",
+      "defaultValue": ""
+    }
+  ]
+}

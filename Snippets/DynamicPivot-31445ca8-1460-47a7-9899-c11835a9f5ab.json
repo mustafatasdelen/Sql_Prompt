@@ -1,0 +1,6 @@
+{
+  "id": "31445ca8-1460-47a7-9899-c11835a9f5ab",
+  "prefix": "DynamicPivot",
+  "description": "",
+  "body": "Delete TMP05_PlanTarihleriToplam Where ITHostName  = dbo.ITHostName()\nDECLARE @DynamicPivotQuery AS NVARCHAR(MAX)\nDECLARE @ColumnName AS NVARCHAR(MAX)\n\nInsert TMP05_PlanTarihleriToplam (UrunID, ProsesAdi, Tarihler, GunlukTopTuketilecekMiktar_Kg)\nSelect TPT.UrunID,TPT.ProsesAdi,  TPT.Tarihler  , SUM(TPT.GunlukTuketilecekMiktar_Kg) \nFROM  TMP05_PlanTarihleri TPT\nWhere TPT.ITHostName = dbo.ITHostName()\nGroup By TPT.UrunID,TPT.ProsesAdi,TPT.Tarihler\nOrder By TPT.UrunID,TPT.ProsesAdi,TPT.Tarihler\n \n--Get distinct values of the PIVOT Column \nSELECT @ColumnName= ISNULL(@ColumnName + ',','') \n       + QUOTENAME(Dates.Tarihler)\nFROM (SELECT DISTINCT Tarihler FROM TMP05_PlanTarihleriToplam ) AS Dates Order By Dates.Tarihler\n  \n--Prepare the PIVOT query using the dynamic \nSET @DynamicPivotQuery = \n  N'SELECT UrunID, ProsesAdi, ' + @ColumnName + '\n    FROM TMP05_PlanTarihleriToplam\n    PIVOT(SUM( GunlukTopTuketilecekMiktar_Kg   ) \n          FOR Tarihler IN (' + @ColumnName + ')) AS PVTTable'\n--Execute the Dynamic Pivot Query\nEXEC sp_executesql @DynamicPivotQuery"
+}
