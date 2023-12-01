@@ -2,5 +2,5 @@
   "id": "5d9875c5-54fd-4a0a-a7d3-ced8b5fe75b2",
   "prefix": "ARAAAAAA",
   "description": "",
-  "body": "Select      o.name Object_Name, o.type_desc\nFrom        sys.sql_modules m\n            Inner Join sys.objects o On m.object_id = o.object_id\nWhere       m.definition Like '%DD%'\nOrder By    2, 1"
+  "body": "Select      o.name Object_Name, o.type_desc\nFrom        sys.sql_modules m\n            Inner Join sys.objects o On m.object_id = o.object_id\nWhere       m.definition Like '%DD%' ----\nOrder By    2, 1"
 }
