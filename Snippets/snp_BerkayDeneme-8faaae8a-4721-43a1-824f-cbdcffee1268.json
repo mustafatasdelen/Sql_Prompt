@@ -2,5 +2,5 @@
   "id": "8faaae8a-4721-43a1-824f-cbdcffee1268",
   "prefix": "snp_BerkayDeneme",
   "description": "",
-  "body": "Select      o.name Object_Name, o.type_desc\r\nFrom        sys.sql_modules m\r\n            Inner Join sys.objects o On m.object_id = o.object_id\r\nWhere       m.definition Like '%%' --ömer güncelleme\r\nOrder By    2, 1"
+  "body": "Select      o.name Object_Name, o.type_desc\r\nFrom        sys.sql_modules m\r\n            Inner Join sys.objects o On m.object_id = o.object_id\r\nWhere       m.definition Like '%%' --ömer güncelleme 2\r\nOrder By    2, 1"
 }
