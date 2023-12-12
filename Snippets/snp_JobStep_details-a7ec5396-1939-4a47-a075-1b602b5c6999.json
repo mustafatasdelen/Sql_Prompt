@@ -1,0 +1,6 @@
+{
+  "id": "a7ec5396-1939-4a47-a075-1b602b5c6999",
+  "prefix": "snp_JobStep_details",
+  "description": "",
+  "body": "use msdb\n\nSELECT \n    [sJOB].[job_id] AS [JobID]\n    , [sJOB].[name] AS [JobName]\n    ,step.step_name\n    ,step.command,step.*\nFROM\n    [msdb].[dbo].[sysjobs] AS [sJOB]\n    LEFT JOIN [msdb].dbo.sysjobsteps step ON sJOB.job_id = step.job_id\n\n--WHERE step.command Like '%org%'\n--step.command LIKE '%MYTABLENAME%'\nORDER BY [JobName]"
+}

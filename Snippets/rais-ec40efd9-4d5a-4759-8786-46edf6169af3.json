@@ -1,0 +1,6 @@
+{
+  "id": "ec40efd9-4d5a-4759-8786-46edf6169af3",
+  "prefix": "rais",
+  "description": "raiserror parametre alınmadı",
+  "body": "Raiserror('<> parametresi alınamadı!',16,1)"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "0c85b39e-3122-44db-9de0-603b18f4bec6",
+  "prefix": "snp_crsp",
+  "description": "Create Procedure",
+  "body": "Create Procedure  [dbo].[$PSP_xx$] \nAs\nSet NoCount On\nBegin \n\t/*\n\t\tYazan\t: $USER$\n\t\tTarih\t: $DATE$\n\t\tAçıklama:\n\t*/\n    Begin Try\n\t\tDeclare\n        \n    End Try \n    Begin Catch\t\n        Declare @ITObjectName NVarchar(126);\n        Set @ITObjectName = OBJECT_NAME(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEnd\nGo\n\n\n",
+  "placeholders": [
+    {
+      "name": "PSP_xx",
+      "defaultValue": ""
+    }
+  ]
+}

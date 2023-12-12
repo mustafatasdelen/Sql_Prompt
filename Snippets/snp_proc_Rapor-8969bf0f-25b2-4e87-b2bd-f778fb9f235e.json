@@ -1,0 +1,6 @@
+{
+  "id": "8969bf0f-25b2-4e87-b2bd-f778fb9f235e",
+  "prefix": "snp_proc_Rapor",
+  "description": "",
+  "body": "Create Procedure $CURSOR$\n(\n\n\n/* Rapor yazdırma */\n@IsRaporExec int Output, @EXCRaporShowDialog tinyint Output, @EXCRaporOutPutType tinyint Output, @EXCRaporFieldValue varchar(100) Output,\n@EXCRaporID int Output, @EXCRaporFieldName varchar(100) Output, @EXCRaporFilterName varchar(100) Output)\nAs\nSet NoCount On\nBegin \n    Begin Try\n        \n\n\n\n\t\tIf @EXCRaporOutPutType = 1 Set @IsRaporExec = 1\n\t\tSet @EXCRaporID = 1487\n        Set @EXCRaporFieldName = 'IsEmriNo'\n        Set @EXCRaporFilterName = 'in'\n        Set @EXCRaporFieldValue = @IsEmriNo\n        Set @EXCRaporShowDialog = 0\n\n    End Try \n    Begin Catch\t\n        Declare @ITObjectName nVarchar(126);\n        Set @ITObjectName = Object_Name(@@PROCID);\n        Execute SP15_GenerateError @ITObjectName;\n    End Catch\nEnd\nGo"
+}

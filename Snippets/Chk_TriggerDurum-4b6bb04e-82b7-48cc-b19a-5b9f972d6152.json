@@ -1,0 +1,12 @@
+{
+  "id": "4b6bb04e-82b7-48cc-b19a-5b9f972d6152",
+  "prefix": "Chk_TriggerDurum",
+  "description": "",
+  "body": "select dbo.FN01_CheckTriggerState('$TriggerName$')",
+  "placeholders": [
+    {
+      "name": "TriggerName",
+      "defaultValue": null
+    }
+  ]
+}

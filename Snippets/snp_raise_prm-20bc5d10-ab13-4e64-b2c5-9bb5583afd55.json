@@ -1,0 +1,6 @@
+{
+  "id": "20bc5d10-ab13-4e64-b2c5-9bb5583afd55",
+  "prefix": "snp_raise_prm",
+  "description": "raiserror parametre alınmadı",
+  "body": "Raiserror('<> parametresi alınamadı!',16,1)"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "41734ff4-1349-47b5-8e9e-2be8d1942497",
+  "prefix": "Snp_AuditGecmisTarih",
+  "description": "Tarih baznda hangi objeelerde değişiklik yapıldı..",
+  "body": "SELECT Distinct CONVERT(Date,EventDate) EventDate , ObjectName FROM LEOAuditDB.dbo.ddlevents Where HostName = 'GNC-NB105' And EventDate >=   '2021-01-25' \n\n"
+}

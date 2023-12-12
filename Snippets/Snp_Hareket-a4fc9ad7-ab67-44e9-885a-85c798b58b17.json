@@ -1,0 +1,6 @@
+{
+  "id": "a4fc9ad7-ab67-44e9-885a-85c798b58b17",
+  "prefix": "Snp_Hareket",
+  "description": "",
+  "body": "Select FD.SeriID, FisDetayID, FD.AddDate, FT.FisTurAdi, FD.Miktar_Mt, S.UrunAdi, SM.KaliteID, KK.KaliteKodu, SM.DepoAdresID\nFrom   IT06_HareketFisD FD\n             INNER JOIN IT06_HareketFisM FM On FM.FisID = FD.FisID\n             INNER JOIN IT01_FisTurleri FT ON FT.FisTurID = Fm.FisTurID\n             INNER JOIN IT06_StokKarti SK On SK.UrunID = Fd.urunID \n             INNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\n             INNER JOIN IT08_SeriM SM ON Sm.seriID = FD.SeriID\n             LEFT OUTER JOIN IT01_KaliteKodlari KK ON KK.KaliteID = SM.KaliteID \nWhere  FD.SeriID =  PARKOT NUMERASINI BURYA YABISDIR! \nOrder By FD.FisDetayID\n"
+}

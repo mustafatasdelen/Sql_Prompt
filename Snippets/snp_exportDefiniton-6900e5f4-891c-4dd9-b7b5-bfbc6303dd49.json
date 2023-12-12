@@ -1,0 +1,6 @@
+{
+  "id": "6900e5f4-891c-4dd9-b7b5-bfbc6303dd49",
+  "prefix": "snp_exportDefiniton",
+  "description": "dışarıya obje yedeklemek için excel e alınır buradan gerekirse yeniden basılır.",
+  "body": "Select o.name, o.create_date,[definition] \nFROM sys.sql_modules M\nINNER JOIN sys.objects O On O.object_id = M.object_id\nWHERE o.name\n\nIN\n(\nN'PV60_TPulseCikan_GostergeValue_KuruAcma_New')"
+}

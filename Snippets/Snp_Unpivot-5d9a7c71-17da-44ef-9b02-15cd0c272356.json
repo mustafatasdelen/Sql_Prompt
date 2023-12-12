@@ -1,0 +1,6 @@
+{
+  "id": "5d9a7c71-17da-44ef-9b02-15cd0c272356",
+  "prefix": "Snp_Unpivot",
+  "description": "",
+  "body": "SELECT SupplierID, Customers, Products\r\nFROM\r\n(SELECT SupplierD, AAA, BBB, CCC\r\nFROM sampletable) p\r\nUNPIVOT\r\n(Products FOR Customers IN\r\n(AAA, BBB, CCC)\r\n)AS example;\r\nGO\r\n\r\nSELECT Fonksiyon, MakinaGrup, Aciklama Into xxxOrgatexfonksiyonlar_Unpivot\r\nFROM\r\n( \r\nSelect  Fonksiyon, [1], [2], [3], [4], [5], [6], [8], [10], [21], [30] From  xxxOrgatexfonksiyonlar\r\n) p\r\nUNPIVOT\r\n(Aciklama FOR MakinaGrup IN\r\n([1], [2], [3], [4], [5], [6], [8], [10], [21], [30])\r\n)AS example;\r\nGo\r\n\r\n\r\nSELECT Groups, MakinaGrup, Aciklama Into xxxOrgatexInfoword_Unpivot\r\nFROM\r\n( \r\nSelect  Groups, infoword1, infoword2, infoword3, infoword4, infoword5, infoword6, infoword7, infoword8, infoword9, infoword10\r\nFrom  xxxOrgatexInfoword\r\n) p\r\nUNPIVOT\r\n(Aciklama FOR MakinaGrup IN\r\n(infoword1, infoword2, infoword3, infoword4, infoword5, infoword6, infoword7, infoword8, infoword9, infoword10)\r\n)AS example;\r\nGO"
+}

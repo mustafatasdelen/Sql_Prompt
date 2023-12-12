@@ -1,0 +1,6 @@
+{
+  "id": "69eabfa0-f29e-40dc-9e56-8d68e08d121c",
+  "prefix": "snp_Ex",
+  "description": "",
+  "body": "IF (SELECT dbo.ITHostName())='MUSTAFAUB'  Begin \n\tRAISERROR('Güncel Çalışma var ', 16,1)\nEND"
+}

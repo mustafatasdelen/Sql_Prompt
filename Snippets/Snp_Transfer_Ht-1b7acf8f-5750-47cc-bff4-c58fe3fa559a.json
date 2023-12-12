@@ -1,0 +1,6 @@
+{
+  "id": "1b7acf8f-5750-47cc-bff4-c58fe3fa559a",
+  "prefix": "Snp_Transfer_Ht",
+  "description": "",
+  "body": "\nDeclare @StokAmbarID int ,@Miktar_Mt Decimal(18,6),@Miktar_Kg Decimal(18,6),@PersonelID int\n\nSet @PersonelID =dbo.F15_GetActivePersonelID(1)\n\nDeclare c Cursor Local For\n\n Select SA.StokAmbarID,SA.Miktar_Mt,SA.Miktar_Kg  From  IT06_StokAmbar SA \nINNER JOIN IT06_StokKarti SK On SK.UrunID = SA.UrunID\nINNER JOIN IT06_Stoklar S On S.UrunTID = SK.UrunTID\nWhere SA.AmbarID  =259 And SK.UrunTID In (230426,230425)\nOrder By SK.UrunTID asc\n\t\t\nOpen c\nFetch Next From c Into @StokAmbarID,@Miktar_Mt,@Miktar_Kg\nWhile @@FETCH_STATUS = 0 Begin\n\t\t\t\nExec SP06_CreateFis_HT @HareketTipID = 3657, @Miktar_Mt = @Miktar_Mt, @Miktar_kg = @Miktar_Kg, @Miktar_Ad = 0, @StokAmbarID = @StokAmbarID, @PersonelID = @personelID\n\n\n\tFetch Next From c Into @StokAmbarID,@Miktar_Mt,@Miktar_Kg\nEnd\nClose c\nDeallocate c"
+}

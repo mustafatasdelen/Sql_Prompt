@@ -1,0 +1,6 @@
+{
+  "id": "cd0e29af-3573-4094-9f7d-e60f5072a0ee",
+  "prefix": "snp_LogPro",
+  "description": "",
+  "body": "Select LIO.Tarih,OVI.VeriIslemAdi,LIO.InfoParams,LIO.InfoKayit From\n  IT15_LogsITObjects LIO\nLEFT OUTER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\nLEFT OUTER JOIN  IT15_ObjectsM OM On OM.ITObjectID = LIO.DSITobjectID\nLEFT OUTER JOIN IT15_ObjectsM OMSP On OMSP.ITObjectID = OVI.SPITObjectID\nWhere LIO.InfoID Like '%(PlanMakinaID:14154%' Order By LIO.ITObjectsLogID Desc\n\n \n\nSELECT OVI.VeriIslemAdi,LIO.InfoKayit,LIO.InfoParams,OVI.ITObjectID,OVI.SPITObjectID, LIO.InfoUser, LIO.InfoHostName FROM  IT15_LogsITObjects LIO INNER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID --INNER JOIN  IT15_ObjectsM OM On OVI.SPITObjectID = LIO.ITObjectID \nWhere LIO.InfoKayit Like '%106613%' Order By LIO.ITObjectsLogID desc"
+}

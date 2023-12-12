@@ -1,0 +1,6 @@
+{
+  "id": "b98ee768-e92e-4bb6-8900-ba5af6323c42",
+  "prefix": "snp_SetRange",
+  "description": "",
+  "body": "Update OD \r\nSet OD.SetRangeDSName = 'PV06_UrunOlcuBirimDonusum',\r\n\tOD.SetRangeKeyField =  'DonusumOlcuBirimID',\r\n\tOD.SetRangeResultField = 'DonusumOlcuBirimKodu'\r\nFrom  IT15_ObjectsM OM INNER JOIN  IT15_ObjectsD OD On OD.ITObjectID = OM.ITObjectID\r\nWhere  OD.ITObjectID  =19883 And OD.ShowSiraNo  = 57 And OD.ITObjectDID  =228366\r\n\r\nUpdate ODF \r\nSet  ODF.SourceFieldName = 'UrunTID' ,ODF.DestFieldName  =  'UrunTID', Mandatory  =1\r\nFrom  IT15_ObjectsM OM INNER JOIN  IT15_ObjectsD OD On OD.ITObjectID = OM.ITObjectID\r\nINNER JOIN IT15_ObjectsDFilter ODF On ODF.ITObjectDID = OD.ITObjectDID\r\nWhere  OD.ITObjectID  =19883 And OD.ShowSiraNo  = 57 And OD.ITObjectDID  =228366\r\n"
+}

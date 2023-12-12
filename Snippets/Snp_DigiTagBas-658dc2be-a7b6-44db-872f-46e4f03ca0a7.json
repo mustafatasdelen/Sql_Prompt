@@ -1,0 +1,6 @@
+{
+  "id": "658dc2be-a7b6-44db-872f-46e4f03ca0a7",
+  "prefix": "Snp_DigiTagBas",
+  "description": "tag bas",
+  "body": "Declare  @RN int, @TagID int,@cIplikMakinaID int\r\nDeclare  @IplikMakineleri Table (RN int, MakinaID int)\r\nSet @TagID = 7\r\nSet @RN = 1\r\nInsert  @IplikMakineleri(RN, MakinaID)\r\nValues\r\n (1,2184)\r\n,(2,2185)\r\n,(3,2186)\r\n,(4,2187)\r\n,(5,2188)\r\n,(6,2189)\r\n,(7,6064)\r\n,(8,6057)\r\n,(9,6066)\r\n,(10,6062)\r\n,(11,6091)\r\n,(12,6092)\r\n,(13,6093)\r\n,(14,6094)\r\n,(15,6063)\r\n\r\nwhile @TagID <= 111 Begin\r\n\tSet @cIplikMakinaID = Null \r\n\tSelect  @cIplikMakinaID = MakinaID From  @IplikMakineleri Where RN = @RN\r\n\tInsert  LeoBox.IT01_Tag(TagID, DeviceID, TagTypeID, MakineID, TagName, TagCode, AddDate, IsCumulative, TagAktif, IsBoyaOtomasyon)\r\n\tSelect  ROW_NUMBER() Over (Order By T.ID asc) + @TagID, T.DeviceID, T.TagTypeID, @cIplikMakinaID, T.TagName, T.TagCode, T.AddDate, T.IsCumulative, T.TagAktif, T.IsBoyaOtomasyon\r\n\tFrom  LeoBox.IT01_Tag T \r\n\tWhere  T.DeviceID Like '%leo%' And T.TagAktif  = 1\r\n\tSet @TagID = @TagID +  7\r\n\tSet @RN  =@RN  +1\r\nEnd "
+}

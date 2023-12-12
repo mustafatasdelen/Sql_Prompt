@@ -1,0 +1,6 @@
+{
+  "id": "eaca069f-df96-41a6-a6ff-2a7119811ba7",
+  "prefix": "pivot",
+  "description": "",
+  "body": "select *\nfrom \n(\n  select store, week, xCount\n  from yt\n) src\npivot\n(\n  sum(xcount)\n  for week in ([1], [2], [3])\n) piv;"
+}

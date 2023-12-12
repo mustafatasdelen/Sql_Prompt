@@ -1,0 +1,6 @@
+{
+  "id": "18cda34a-787b-4172-bef1-927b9d9f3f9c",
+  "prefix": "snp_if_Columns_Updated",
+  "description": "",
+  "body": "If\tNot (Update(IsITUpdate)) And \n\tExists (Select *\n\t\t\tFrom   dbo.F15_UpdatedColumns(Columns_Updated(), @@PROCID)\n            Where  ColumnName Not In ('UpdateDate', 'AddUser', 'UpdateUser', 'IsID', 'ByIsID', 'ByPlanMakinaID') )\nBegin\n\nEnd"
+}

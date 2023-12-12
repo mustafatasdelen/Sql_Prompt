@@ -1,0 +1,6 @@
+{
+  "id": "d36dbbe1-ed03-4ee1-97d2-8abc1358a76d",
+  "prefix": "Snp_SP_Now_SQLTryy",
+  "description": "",
+  "body": "\tExec dbo.SP_Now_SQL @SQLText = 'select * from VIEWKCK_SIPARISKALANLISTESI FETCH FIRST 1 ROWS ONLY'\n"
+}

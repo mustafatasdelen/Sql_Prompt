@@ -1,0 +1,6 @@
+{
+  "id": "e27c9fe9-1e37-45c6-b7c5-f844734b4702",
+  "prefix": "rais_MsjString",
+  "description": "",
+  "body": "Declare @mmsj varchar(200)\n\n\t\t\tSet @mmsj = '$CURSOR$'\n\n\t\t\tRaiserror(@mmsj,16,1)"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "a65b6875-2be5-48d8-80a5-5dad1d59a2d6",
+  "prefix": "snp_LeoAudit",
+  "description": "Leo Audit Search",
+  "body": "SELECT * FROM LEOAuditDB.dbo.DDLEvents Where ObjectName Like '%%'"
+}

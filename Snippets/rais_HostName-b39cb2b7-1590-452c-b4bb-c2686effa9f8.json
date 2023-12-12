@@ -1,0 +1,6 @@
+{
+  "id": "b39cb2b7-1590-452c-b4bb-c2686effa9f8",
+  "prefix": "rais_HostName",
+  "description": "rais_HostName",
+  "body": "declare @HostName varchar(150)\nSET @HostName =(select dbo.ITHostName())\nIF @HostName = 'GNC-NB-2110' BEGIN\n\t\tRaiserror('%s',16,1,@HostName)\nEND"
+}

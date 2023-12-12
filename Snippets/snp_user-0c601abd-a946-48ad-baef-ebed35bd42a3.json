@@ -1,0 +1,6 @@
+{
+  "id": "0c601abd-a946-48ad-baef-ebed35bd42a3",
+  "prefix": "snp_user",
+  "description": "AddUser",
+  "body": "([dbo].[F15_GetActivePersonelID]((1)))"
+}

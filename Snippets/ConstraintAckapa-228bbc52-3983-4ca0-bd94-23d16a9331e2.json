@@ -1,0 +1,6 @@
+{
+  "id": "228bbc52-3983-4ca0-bd94-23d16a9331e2",
+  "prefix": "ConstraintAckapa",
+  "description": "",
+  "body": "\n\n\nALTER TABLE tableName NOCHECK CONSTRAINT ALL\n\n-- Re-enable the constraints on a table called tableName:\nALTER TABLE tableName WITH CHECK CHECK CONSTRAINT ALL"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "e0964d28-3049-4270-8239-471afa635cc4",
+  "prefix": "snp_GetscreenVeriIslemAdi",
+  "description": "",
+  "body": "Select * INTO  xxxislemlermoralkmyalab FROM ( Select \r\nOMD.ITObjectName,OVID.ITVeriIslemID OVIDITVeriIslemID,OMSPD.ITObjectName OMSPDITObjectName, OMSPD.ITObjectAlias OMSPDITObjectAlias,OVID.VeriIslemAdi\r\nFROM  IT15_Screens S  \r\nINNER JOIN  IT15_ModulAltGruplari MAG ON MAG.ModulAltGrupID = S.ModulAltGrupID\r\nINNER JOIN IT15_ObjectsM OMD ON OMD.ITObjectID = S.ITObjectID2\r\nINNER JOIN IT15_ObjectsVeriIslemleri OVID ON OVID.ITObjectID = OMD.ITObjectID\r\nINNER JOIN IT15_ObjectsM OMSPD ON OMSPD.ITObjectID =OVID.SPITObjectID\r\n\r\nWHERE MAG.ModulID = 38\r\nUNION \r\n\r\nSelect \r\nOM.ITObjectName,OVI.ITVeriIslemID OVIITVeriIslemID,OMSP.ITObjectName OMSPITObjectName,OMSP.ITObjectAlias OMSPITObjectAlias,OVI.VeriIslemAdi\r\nFROM  IT15_Screens S  \r\nINNER JOIN  IT15_ModulAltGruplari MAG ON MAG.ModulAltGrupID = S.ModulAltGrupID\r\nINNER JOIN IT15_ObjectsM OM ON OM.ITObjectID = S.ITObjectID\r\nINNER JOIN IT15_ObjectsVeriIslemleri OVI ON OVI.ITObjectID = OM.ITObjectID\r\nLEFT OUTER JOIN  IT15_ObjectsM OMSP ON OMSP.ITObjectID = OVI.SPITObjectID\r\n\r\nWHERE MAG.ModulID = 38\r\n) ana \r\n"
+}

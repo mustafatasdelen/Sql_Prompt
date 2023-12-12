@@ -1,0 +1,6 @@
+{
+  "id": "f0f6448a-9465-4edd-9cc8-40911ab84958",
+  "prefix": "cursor",
+  "description": "",
+  "body": "Declare @UTSiparisDID INT\r\nDeclare cSiparisKapat Cursor Local For\r\nSelect   DISTINCT  USD.UTSiparisDID          \r\nFrom        IT15_LogsITObjects LIO\r\nInner Join IT04_SiparisD SD On LIO.KeyFieldValue = SD.SiparisDetayID\r\nInner Join IT06_Stoklar S On S.UrunTID = SD.UrunTID\r\nLeft Outer Join IT04_UTSiparisD USD On USD.UTSiparisDID = SD.UTSiparisDID\r\nLeft Outer Join IT04_UTSiparisM USM On USM.UTSiparisID = USD.UTSiparisID\r\nLeft Outer Join IT01_Personel P On P.PersonelID = USM.SiparisiAlan\r\nLeft Outer Join IT01_Firmalar F On F.FirmaID = USM.FirmaID\r\nLeft Outer Join IT01_UTSiparisDurumlari USDD On USDD.UTSiparisDurumID = USD.UTSiparisDurumID\r\nWhere       LIO.ITVeriIslemID = 13690 And   LIO.DSITobjectID = 25692 And USD.UTSiparisDurumID = 400 And SD.SiparisDetayDurumu = 4 And USM.SiparisiAlan In (66,68)\r\nOpen cSiparisKapat\r\nFetch Next From cSiparisKapat Into @UTSiparisDID\r\nWhile @@FETCH_STATUS=0 Begin\r\n    \r\n    Exec dbo.PSP04_UTSiparisKapat @UTSiparisDID = @UTSiparisDID\r\n    \r\n\r\n\r\n\r\n\r\n    Fetch Next From cSiparisKapat Into @UTSiparisDID\r\nEnd\r\nClose cSiparisKapat\r\nDeallocate cSiparisKapat"
+}

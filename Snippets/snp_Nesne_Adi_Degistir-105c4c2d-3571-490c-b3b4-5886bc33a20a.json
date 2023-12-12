@@ -1,0 +1,6 @@
+{
+  "id": "105c4c2d-3571-490c-b3b4-5886bc33a20a",
+  "prefix": "snp_Nesne_Adi_Degistir",
+  "description": "",
+  "body": "Declare @EskiAd nVarchar(200) = 'PSP05_ReceteCiktiAl'\nDeclare @YeniAd nVarchar(200) = 'SP05_TMP_PartiOlustur'\n\nExec sys.sp_rename @objname = @EskiAd, @newname = @YeniAd\n\nUpdate IT15_ObjectsM Set ITObjectName = @YeniAd Where ITObjectName = @EskiAd"
+}

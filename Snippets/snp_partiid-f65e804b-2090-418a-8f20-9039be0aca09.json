@@ -1,0 +1,6 @@
+{
+  "id": "f65e804b-2090-418a-8f20-9039be0aca09",
+  "prefix": "snp_partiid",
+  "description": "",
+  "body": "\tInsert IT04_SiparisParti(IsEmriTipID, SiparisDetayID, RotaID, FasoncuFirmaID, Miktar_Mt, Miktar_Kg, Miktar_Ad, PartiMiktar_Mt,PartiMiktar_Kg, PartiMiktar_Ad)\r\n\t\t\tValues( @IsEmriTipID,@SiparisDetayID,@SabitRotaID,Null,@SPPlanMt, @SPPlanKg,Null,@SPPlanMt, @SPPlanKg,Null )\r\n\t\t\tSet @PartiID = SCOPE_IDENTITY()\r\n"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "0e107280-41c6-4ca2-82a9-716818494057",
+  "prefix": "cte",
+  "description": "WITH cte fragment",
+  "body": "\n        WITH $cte_name$ AS\n(\n$SELECTEDTEXT$\n)\nSELECT $CURSOR$\nFROM $cte_name$",
+  "placeholders": [
+    {
+      "name": "cte_name",
+      "defaultValue": ""
+    }
+  ]
+}

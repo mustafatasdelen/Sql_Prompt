@@ -1,0 +1,6 @@
+{
+  "id": "2fe99a94-77c2-41a2-81fc-fb8d0122e2bf",
+  "prefix": "snp_hostname",
+  "description": "snp_hostname",
+  "body": "Declare @x Varchar(50)\r\nSet @x=(Select dbo.ITHostName())\r\n\r\nIf @x='GNC-NB104' Begin\r\n\tRaiserror('@StokAmbarID : %d',16,1,@StokAmbarID)\r\nEnd"
+}
