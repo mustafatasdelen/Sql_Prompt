@@ -2,11 +2,5 @@
   "id": "5aa420f8-de03-48d6-9e4c-153a9ba71d76",
   "prefix": "snp_audit",
   "description": "SELECT * FROM LEOAuditDB.dbo.ddlevents Where  Objectname = 'IT15_System_MamulKumas'",
-  "body": "SELECT * FROM LEOAuditDB.dbo.ddlevents Where  Objectname = '$paste$' Order By LeoEventID DESC",
-  "placeholders": [
-    {
-      "name": "paste",
-      "defaultValue": null
-    }
-  ]
+  "body": "SELECT * FROM LEOAuditDB.dbo.ddlevents Where  Objectname = '$PASTE$' Order By LeoEventID DESC"
 }
