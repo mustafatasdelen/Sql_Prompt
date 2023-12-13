@@ -2,7 +2,7 @@
   "id": "6ad2afab-0a9a-4723-bb64-3cfd56a82b0c",
   "prefix": "snp_ColumnEkleme",
   "description": "",
-  "body": "Alter Table $TABLENAME$ Add $CURSOR$ TinyInt",
+  "body": "Alter Table $TABLENAME$ Add $CURSOR$ TinyInt --Not Null Default 0",
   "placeholders": [
     {
       "name": "TABLENAME",
