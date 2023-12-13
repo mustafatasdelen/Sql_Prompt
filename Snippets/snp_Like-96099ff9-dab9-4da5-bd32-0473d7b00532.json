@@ -1,0 +1,6 @@
+{
+  "id": "96099ff9-dab9-4da5-bd32-0473d7b00532",
+  "prefix": "snp_Like",
+  "description": "",
+  "body": "Like '%$CURSOR$%'"
+}
