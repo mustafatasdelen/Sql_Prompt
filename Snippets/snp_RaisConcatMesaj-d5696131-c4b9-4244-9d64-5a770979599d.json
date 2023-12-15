@@ -1,0 +1,6 @@
+{
+  "id": "d5696131-c4b9-4244-9d64-5a770979599d",
+  "prefix": "snp_RaisConcatMesaj",
+  "description": "",
+  "body": "Declare @msj1 Varchar(1000)\r\nSet @msj1 = ''\r\nSelect  @msj1 = (CONCAT(@msj1, ana.SatinAlmaSiparisID, ','))\r\nFrom    (Select Distinct   HFM.SatinAlmaSiparisID From IT06_HareketFisM HFM Where  HFM.DepoGirisID = 56427) ana\r\n\r\nRaiserror('Sütunları satır olarak azdıraya yarar. Örn: (123, 124 ..) !',16,1, @msj1) "
+}
