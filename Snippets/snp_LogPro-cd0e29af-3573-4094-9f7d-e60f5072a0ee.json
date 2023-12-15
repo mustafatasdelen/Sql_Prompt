@@ -2,5 +2,5 @@
   "id": "cd0e29af-3573-4094-9f7d-e60f5072a0ee",
   "prefix": "snp_LogPro",
   "description": "",
-  "body": "Select LIO.Tarih,OVI.VeriIslemAdi,LIO.InfoParams,LIO.InfoKayit From\n  IT15_LogsITObjects LIO\nLEFT OUTER JOIN  IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\nLEFT OUTER JOIN  IT15_ObjectsM OM On OM.ITObjectID = LIO.DSITobjectID\nLEFT OUTER JOIN IT15_ObjectsM OMSP On OMSP.ITObjectID = OVI.SPITObjectID\nWhere LIO.InfoID Like '%(PlanMakinaID:14154$CURSOR$%' Order By LIO.ITObjectsLogID Desc\n"
+  "body": "Select      LIO.Tarih, OVI.VeriIslemAdi, LIO.InfoParams, LIO.InfoKayit\nFrom        IT15_LogsITObjects LIO\n            Left Outer Join IT15_ObjectsVeriIslemleri OVI On OVI.ITVeriIslemID = LIO.ITVeriIslemID\n            Left Outer Join IT15_ObjectsM OM On OM.ITObjectID = LIO.DSITobjectID\n            Left Outer Join IT15_ObjectsM OMSP On OMSP.ITObjectID = OVI.SPITObjectID\nWhere       LIO.InfoID Like '%(PlanMakinaID:14154$CURSOR$%'\nOrder By    LIO.ITObjectsLogID Desc\n"
 }
