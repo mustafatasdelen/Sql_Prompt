@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>snp_ObjectsD_Aktarma_V4</Title>
+      <Shortcut>snp_ObjectsD_Aktarma_V4</Shortcut>
+      <Description>ObjectsD Grup desteği eklendi. SQL 2008 ve öncesi sürümler için kodlar Concat olmadan yazıldı. </Description>
+      <Author />
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations />
+      <Code Language="sql"><![CDATA[/*
+İşlevi : ObjectsD ayarlarını script olarak alıp aktarmaya yarar
+
+Kullanımı : 
+	1. Aşağıdaki Scriptte @Objects tablosuna hangi nesnelerin aktarılacağı yazılır ve "Kaynak" Veri Tabanında çalıştırılır.
+	2. Oluşan script hedef veri tabanında çalıştırılır.
+		
+Ayarlar : 
+	DİKKAT: Scipt almadan önce aşağıdaki ayarları yapın :
+		1. Results To text yap
+		2. "SSMS > Options > Query Results > SQL Server" sayfasındaki "Maximum number of characters displayed in each column" alanınnı 20.000 gibi büyük bir sayı verin.
+	
+Diğer Seçenekler : 
+	1. @KolonlariAktar : Aşağıdaki ayaları aktarır
+		* Kolon Ayarları (lookup kolonlar da oluşuturulur)
+		* Güncel için Kolon Yetkileri
+		* Güncel için Nesne yetkisi 
+	2. @VeriIslemleriniAktar 
+		* Veri işlemleri aktarılır. Aktarım yapılabilmesi için veri nesnesinin hedef veri tabanında olması gerekir.
+		
+*/
+
+Set NoCount On
+
+Declare @KolonlariAktar TinyInt, @VeriIslemleriniAktar TinyInt
+Declare @Objects Table(ITObjectName Varchar(100))
+
+/*********** BEGIN INPUT ************/
+Insert @Objects (ITObjectName) 
+Values 
+('$CURSOR$')
+
+Set @KolonlariAktar = 1
+Set @VeriIslemleriniAktar = 1
+
+/*********** END INPUT ************/
+
+
+/*  1. Tanımlamalar */
+Print 'Set NoCount On '
+Print 'Set Ansi_Null_Dflt_On On'
+
+Print 'If Object_Id(''tempdb..#Alanlar'') Is Not Null Drop Table #Alanlar	
+Create Table #Alanlar(ITObjectName varchar(100), FieldName Varchar(40), FieldCaption Varchar(40), ShowSiraNo int, CaptionSize int, Type tinyint, NotInGrid tinyint, ITRequired tinyint, LField tinyint, LDataSet varchar(50), LKeyFields varchar(50), LLKeyFields varchar(50), LResultField varchar(50), LWhereText varchar(500), LOrderText varchar(500), LDetailDataSet varchar(50) , ITReadOnly TinyInt, ITVisible  TinyInt, ITDefValue Varchar(100), ITObjectItemGroupName Varchar(100), ROMITEdit tinyint, ROMITInsert tinyint, ROMITDelete tinyint, ROMITReadOnly tinyint)'
+
+Print 'If OBJECT_ID(''tempdb..#VeriIslemleri'') Is Not Null Drop Table #VeriIslemleri 
+Create Table #VeriIslemleri (ITobjectName Varchar(100),SiraNo Smallint,VeriIslemAdi Varchar(50),SPITObjectName Varchar(100),DSITObjectName Varchar(100),DSITObjectID2Name Varchar(100),SFilterFieldName Varchar(50),DFilterFieldName Varchar(50),IsOnay tinyint,IsBeginGroup tinyint,SPITObjectIDWhereText Varchar(200),DSITWhereText Varchar(200),DS2ITWhereText Varchar(200),ITShortCutName Varchar(100),AnalizDataName Varchar(100),ITObjectItemGroupName Varchar(100),IsDSRequery tinyint,ShowInTab tinyint,IsToolbarButton tinyint) '
+
+If @KolonlariAktar = 1 Begin
+	/* 2.A Alanlar Kaydedilir. */
+	Select  'Insert #Alanlar (ITObjectName, FieldName, FieldCaption, ShowSiraNo, CaptionSize, Type, NotInGrid, ITRequired, LField, LDataSet, LKeyFields, LLKeyFields, LResultField, LWhereText, LOrderText, LDetailDataSet, ITReadOnly, ITVisible, ITDefValue, ITObjectItemGroupName, ROMITEdit, ROMITInsert, ROMITDelete, ROMITReadOnly)' + CHAR(13) +
+			' VALUES(''' + OM.ITObjectName + ''',''' + OD.FieldName + ''', ''' + FieldCaption + ''', ' + CONVERT(VARCHAR(100), OD.ShowSiraNo) + ', ' + CONVERT(VARCHAR(100), ISNULL(OD.CaptionSize,7)) + ', '
+			+ CONVERT(VARCHAR(100), OD.Type)+ ', '+ CONVERT(VARCHAR(100), IsNull(OD.NotInGrid, 0)) + ', '+ CONVERT(VARCHAR(100), IsNull(OD.ITRequired, 0)) + ', '
+			+ CONVERT(VARCHAR(100), ISNULL(OD.LField,0))+ ','''+ ISNULL(OD.LDataSet, '')+ ''','''+ ISNULL(OD.LKeyFields,'') + ''','''+ ISNULL(OD.LLKeyFields, '') + ''',''' + ISNULL(OD.LResultField,'') + ''','''
+			+ ISNULL(OD.LWhereText, '') + ''',''' + ISNULL(OD.LOrderText, '') + ''',''' + ISNULL(OD.LDetailDataSet, '') + ''', ' + CONVERT(VARCHAR(100), ISNULL(ROD.ITReadOnly,0)) + ', '
+			+ CONVERT(VARCHAR(100), ISNULL(ROD.ITVisible,0))+ ', ''' + ISNULL(ROD.ITDefValue, '') + ''', ' + ISNULL('''' + G.ItemGroupName + '''', 'NULL')+ ', ' +  
+			+ CONVERT(VARCHAR(100), ROM.ITEdit)+ ', '+ CONVERT(VARCHAR(100), ROM.ITInsert)+ ', '+ CONVERT(VARCHAR(100), ROM.ITDelete)+ ', '+ CONVERT(VARCHAR(100), ROM.ITReadOnly) + ')' 
+	From	IT15_ObjectsD OD 
+			Inner Join IT15_ObjectsM OM On OM.ITObjectID = OD.ITObjectID
+			LEFT OUTER JOIN IT15_RolObjectsM ROM On ROM.ITObjectID = OM.ITObjectID And ROM.RolID = 1 /* Güncel Rolünün Yetkileri alınır */
+			LEFT OUTER JOIN IT15_RolObjectsD ROD On ROD.RolObjectMID = ROM.RolObjectMID And ROD.ITObjectDID = OD.ITObjectDID
+			LEFT OUTER JOIN dbo.IT15_ObjectsItemGroup G ON G.ITObjectItemGroupID = OD.ITObjectItemGroupID
+	Where	OM.ITObjectName in (Select O.ITObjectName From @Objects O)
+
+
+	/* 2.X */
+	Print '
+	
+	Declare @name Varchar(100)
+	Declare c Cursor Local For
+		Select Distinct ITObjectName From #Alanlar
+	Open c
+	Fetch Next From c Into @name
+	While @@FETCH_STATUS = 0 Begin
+	
+		Exec SP15_AlanYenile @name
+
+		Fetch Next From c Into @name
+	End
+	Close c
+	Deallocate c
+
+	'
+
+PRINT '
+	Insert  IT15_ObjectsItemGroup (ITObjectID, ItemGroupType, ItemGroupName)
+	Select  Distinct OM.ITObjectID, 1, A.ITObjectItemGroupName
+	From    #Alanlar A
+			Inner Join IT15_ObjectsM OM On OM.ITObjectName = A.ITobjectName Collate Database_Default
+	Where   ISNULL( A.ITObjectItemGroupName, '''') <> ''''
+			And not exists(select * from IT15_ObjectsItemGroup T Where T.ITObjectID = OM.ITObjectID And T.ItemGroupName = A.ITObjectItemGroupName Collate Database_Default And T.ItemGroupType = 1 )
+'
+
+
+	/*2.B.1 Alanlar aktarılır - var olanlar güncellenir (yeni normal kolon hiçbir zaman eklenmez.) */
+	Print '
+	Declare @Adet int
+
+	Update	OD Set 
+			FieldCaption = A.FieldCaption, 
+			ShowSiraNo = A.ShowSiraNo, 
+			CaptionSize = A.CaptionSize, 
+			Type = A.Type,
+			NotInGrid = A.NotInGrid,
+			ITRequired = A.ITRequired,
+			LField = A.LField, 
+			LDataSet = A.LDataSet, 
+			LKeyFields = A.LKeyFields, 
+			LLKeyFields = A.LLKeyFields, 
+			LResultField = A.LResultField, 
+			LWhereText = A.LWhereText, 
+			LOrderText = A.LOrderText, 
+			LDetailDataSet = A.LDetailDataSet,
+			ITObjectItemGroupID = G.ITObjectItemGroupID
+	From	IT15_ObjectsD OD 
+			Inner Join IT15_ObjectsM OM On OM.ITObjectID = OD.ITObjectID
+			Inner Join #Alanlar A On OD.FieldName = A.FieldName COLLATE DATABASE_DEFAULT  And A.ITObjectName = OM.ITObjectName COLLATE DATABASE_DEFAULT 
+			Left Join IT15_ObjectsItemGroup G ON G.ITObjectID = OM.ITObjectID And G.ItemGroupName = A.ITObjectItemGroupName Collate Database_Default And G.ItemGroupType = 1
+
+	Set @Adet = @@ROWCOUNT
+
+	If @Adet = 0 Raiserror(''Hiç Güncelleme yapılmadı. Muhtemelen bir yanlışlık var.'',16,1)
+	Else Print Convert(varchar(10), @Adet) +  '' adet satır güncellendi.''
+
+	'
+
+
+
+	/*	2.B.2 Alanlar aktarılır - LOOK-UP kolonlar eklenir, yetkisi verilir. */
+	Print '
+	Insert IT15_ObjectsD (ITObjectID, FieldName, FieldCaption, ShowSiraNo, CaptionSize, Type, NotInGrid, ITRequired, LField, LDataSet, LKeyFields, LLKeyFields, LResultField,
+		   LWhereText, LOrderText, LDetailDataSet, FieldType)
+
+	SELECT	OM.ITObjectID, A.FieldName, A.FieldCaption, A.ShowSiraNo, A.CaptionSize, A.Type, A.NotInGrid, A.ITRequired, A.LField, A.LDataSet, A.LKeyFields,
+			A.LLKeyFields, A.LResultField, A.LWhereText, A.LOrderText, A.LDetailDataSet, ''varchar''
+	From	#Alanlar A
+			INNER JOIN IT15_ObjectsM OM On OM.ITObjectName = A.ITObjectName Collate Database_Default
+
+	Where	ISNULL(A.LDataSet,'''') <> ''''
+			And Not Exists(
+				SELECT * FROM IT15_ObjectsD OD Where OD.ITObjectID = OM.ITObjectID And OD.LDataSet = A.LDataSet Collate Database_Default 
+				And OD.LKeyFields = A.LKeyFields Collate Database_Default And OD.LLKeyFields = A.LLKeyFields Collate Database_Default And OD.LResultField = A.LResultField Collate Database_Default
+			)
+
+	Set @Adet = @@ROWCOUNT
+
+	If @Adet > 0 Begin	
+		Print ''     '' + convert(varchar(10), @Adet) + '' adet yeni lookup kolon yaratıldı. Tövbe.. oluştuldu.''
+
+		/*  Eğer yeni kolon eklendiyse yetkisi de verilir. */
+		Insert  IT15_RolObjectsD(RolObjectMID, ITObjectDID, ITReadOnly, ITVisible, ITDefValue)
+		Select  ROM.RolObjectMID, OD.ITObjectDID, A.ITReadOnly, A.ITVisible, A.ITDefValue
+		From    IT15_ObjectsD OD
+				Inner Join IT15_ObjectsM OM On OM.ITObjectID = OD.ITObjectID
+				Inner Join #Alanlar A On A.ITObjectName = OM.ITObjectName Collate Database_Default And A.FieldName = OD.FieldName Collate Database_Default
+				Inner Join IT15_RolObjectsM ROM On ROM.ITObjectID = OM.ITObjectID And  ROM.RolID = 1
+		Where   Not Exists (Select  * From  IT15_RolObjectsD ROD Where  ROD.RolObjectMID = ROM.RolObjectMID And ROD.ITObjectDID = OD.ITObjectDID)
+	
+		Set @Adet = @@ROWCOUNT
+
+		Print ''     '' + Convert(varchar(10), @Adet) + '' adet yeni lookup için yetki verildi.''
+
+	End
+	'
+
+	/* 2.B.3 Tüm kolon yetkileri güncellenir. (sadece güncel rolü için) */
+
+	Print '
+	
+	;With TMP AS (Select Distinct ITObjectName, ROMITEdit, ROMITInsert, ROMITDelete, ROMITReadOnly From #Alanlar)
+	Update  ROM
+	Set     ITEdit = ROMITEdit, ITInsert = ROMITInsert, ITDelete = ROMITDelete, ITReadOnly = ROMITReadOnly
+	From    IT15_RolObjectsM ROM 
+			Inner Join IT15_ObjectsM OM On OM.ITObjectID = ROM.ITObjectID
+			Inner Join TMP T On T.ITObjectName = OM.ITObjectName COLLATE DATABASE_DEFAULT
+	Where	ROM.RolID = 1 /* Sadece GUNCEL */
+		
+	Set @Adet = @@ROWCOUNT
+
+	If @Adet = 0 Raiserror(''Rol Yetkilerde hiç güncelleme yapılmadı. iki sebebi olabilir : Nesne yok veya nesnenin GUNCEL e yetkisi yok....'',16,1)
+	Else Begin 
+		Print Convert(varchar(10), @Adet) + '' adet nesne için GÜNCEL rolü yetkisi güncellendi.''
+		
+		Update  ROD
+		Set     ROD.ITReadOnly = A.ITReadOnly, ROD.ITVisible = A.ITVisible, ROD.ITDefValue = A.ITDefValue
+		From    IT15_ObjectsD OD
+				Inner Join IT15_RolObjectsD ROD On OD.ITObjectDID = ROD.ITObjectDID
+				Inner Join IT15_RolObjectsM ROM On ROD.RolObjectMID = ROM.RolObjectMID And ROM.RolID = 1 /* Sadece GUNCEL */
+				Inner Join IT15_ObjectsM OM On OM.ITObjectID = OD.ITObjectID
+				Inner Join #Alanlar A On OD.FieldName = A.FieldName COLLATE DATABASE_DEFAULT  And A.ITObjectName = OM.ITObjectName COLLATE DATABASE_DEFAULT
+
+
+		Set @Adet = @@ROWCOUNT
+
+		If @Adet = 0 Raiserror(''Kolon yetkilerde hiç güncelleme yapılmadı. Bir şeyler yolunda gitmiyor...'',16,1)
+		Else Print Convert(varchar(10), @Adet) + '' adet kolon yetkisi güncellendi. (sadece GÜNCEL rolü için)''
+
+		
+	End
+	'
+End 
+
+
+
+If @VeriIslemleriniAktar = 1 Begin
+	/* 3.A Veri işlemleri kaydedilir. */
+	Select
+	'Insert #VeriIslemleri (ITobjectName, SiraNo, VeriIslemAdi, SPITObjectName, DSITObjectName, DSITObjectID2Name, SFilterFieldName, DFilterFieldName, IsOnay, IsBeginGroup, SPITObjectIDWhereText, DSITWhereText, DS2ITWhereText, ITShortCutName, AnalizDataName, ITObjectItemGroupName, IsDSRequery, ShowInTab, IsToolbarButton)' + CHAR(13) +
+			'Values( ''' + OM.ITobjectName + ''', '+ CONVERT(VARCHAR(100), ISNULL(SiraNo, 0)) + ',''' + ISNULL(VeriIslemAdi, '') + ''', ''' + ISNULL(SPOM.ITObjectName, '') + ''', ''' + ISNULL(DSOM.ITObjectName, '')+ ''', '''
+			+ ISNULL(DSOM2.ITObjectName, '') + ''', ''' + ISNULL(SFilterFieldName, '') + ''', ''' + ISNULL(DFilterFieldName, '') + ''', ', + CONVERT(VARCHAR(100), ISNULL(IsOnay,0)) + ', '+ CONVERT(VARCHAR(100), ISNULL(IsBeginGroup,0)) + ', '''
+			+ ISNULL(SPITObjectIDWhereText, '') + ''', '''+ ISNULL(DSITWhereText, '') + ''', '''+ ISNULL(DS2ITWhereText, '') + ''', '''
+			+ ISNULL(ISC.ITShortcut, '') + ''', ''' + ISNULL(ADM.AnalizAdi,'') + ''', '+ ISNULL(''''+G.ItemGroupName+'''', 'NULL') + ', '+ CONVERT(VARCHAR(100), ISNULL(IsDSRequery, 0)) + ', '
+			+ CONVERT(VARCHAR(100), ISNULL(ShowInTab,0)) + ', ' + CONVERT(VARCHAR(100), ISNULL(IsToolbarButton,0)) + ')'
+	From	IT15_ObjectsVeriIslemleri VI
+			Left Outer Join IT15_ObjectsM OM On	OM.ITObjectID = VI.ITobjectID
+			Left Outer Join IT15_ObjectsM SPOM On SPOM.ITObjectID = VI.SPITObjectID
+			Left Outer Join IT15_ObjectsM DSOM On DSOM.ITObjectID = VI.DSITObjectID
+			Left Outer Join IT15_ObjectsM DSOM2 On DSOM2.ITObjectID = VI.DSITObjectID2
+			Left Outer Join IT15_ITShortCuts ISC On ISC.ITShortcutID = VI.ITShortCutID
+			Left Outer Join IT15_AnalizDataM ADM On ADM.AnalizDataID = VI.AnalizDataID
+			Left Outer Join IT15_ObjectsItemGroup G On G.ITObjectItemGroupID = VI.ITObjectItemGroupID
+	Where	OM.ITObjectName in (Select O.ITObjectName From @Objects O)
+
+	
+
+	/* 3.B Veri işlemleri aktarılır */
+	Print '
+	Insert  IT15_ObjectsItemGroup (ITObjectID, ItemGroupType, ItemGroupName)
+	Select  Distinct OM.ITObjectID, 2, VI.ITObjectItemGroupName
+	From    #VeriIslemleri VI
+			Inner Join IT15_ObjectsM OM On OM.ITObjectName = VI.ITobjectName Collate Database_Default
+	Where   ISNULL(VI.ITObjectItemGroupName, '''') <> ''''
+			And not exists(select * from IT15_ObjectsItemGroup T Where T.ITObjectID = OM.ITObjectID And T.ItemGroupName = VI.ITObjectItemGroupName Collate Database_Default And T.ItemGroupType = 2 )
+
+	Insert  IT15_ObjectsVeriIslemleri (ITObjectID, SiraNo, VeriIslemAdi, SPITObjectID, DSITObjectID, DSITObjectID2, SFilterFieldName, DFilterFieldName, IsOnay, IsBeginGroup, SPITObjectIDWhereText, DSITWhereText, DS2ITWhereText, ITShortCutID, AnalizDataID, ITObjectItemGroupID, IsDSRequery, ShowInTab, IsToolbarButton)
+	Select  OM.ITObjectID, VI.SiraNo, VI.VeriIslemAdi, SPOM.ITObjectID, DSOM.ITObjectID, DSOM2.ITObjectID, VI.SFilterFieldName, VI.DFilterFieldName, VI.IsOnay, VI.IsBeginGroup, VI.SPITObjectIDWhereText, VI.DSITWhereText, VI.DS2ITWhereText, ISC.ITShortcutID, ADM.AnalizDataID, G.ITObjectItemGroupID, VI.IsDSRequery, VI.ShowInTab, VI.IsToolbarButton
+	From    #VeriIslemleri VI
+			Left Outer Join IT15_ObjectsM OM On OM.ITObjectName = VI.ITobjectName Collate Database_Default
+			Left Outer Join IT15_ObjectsM SPOM On SPOM.ITObjectName = VI.SPITObjectName Collate Database_Default
+			Left Outer Join IT15_ObjectsM DSOM On DSOM.ITObjectName = VI.DSITObjectName Collate Database_Default
+			Left Outer Join IT15_ObjectsM DSOM2 On DSOM2.ITObjectName = VI.DSITObjectID2Name Collate Database_Default
+			Left Outer Join IT15_ITShortCuts ISC On ISC.ITShortcut = VI.ITShortCutName Collate Database_Default
+			Left Outer Join IT15_AnalizDataM ADM On ADM.AnalizAdi = VI.AnalizDataName Collate Database_Default
+			Left Outer Join IT15_ObjectsItemGroup G On G.ITObjectID = OM.ITObjectID And G.ItemGroupName = VI.ITObjectItemGroupName Collate Database_Default
+	Where Not Exists(Select * From IT15_ObjectsVeriIslemleri OVI Where OVI.ITObjectID = OM.ITObjectID And OVI.VeriIslemAdi = VI.VeriIslemAdi Collate Database_Default)
+			And (
+				Not(ISNULL(VI.SPITObjectName,'''') <> '''' And SPOM.ITObjectID Is Null)
+				And
+				Not(ISNULL(VI.DSITObjectName,'''') <> '''' And DSOM.ITObjectID Is Null )
+				And
+				Not(ISNULL(VI.DSITObjectID2Name,'''') <> '''' And DSOM2.ITObjectID Is Null )
+			)
+
+
+	Set @Adet = @@ROWCOUNT
+
+
+	If @Adet = 0 Raiserror(''Hiç veri işlemi eklenmedi. '',16,1)
+	Else Begin
+		Declare @ToplamAdet int = (Select COUNT(*) From #VeriIslemleri VI)
+		Print Convert(varchar(10), @Adet) + '' adet veri işlemi eklendi. Toplam veri işlem adedi : '' + Convert(varchar(10),  @ToplamAdet ) 
+	End 
+
+	Declare @M varchar(1000)
+	Select	@M = ISNULL(@M + '','', '''') +  H.N
+	From	#VeriIslemleri V Cross Apply (Select V.SPITObjectName As N Union Select V.DSITObjectName Union Select V.DSITObjectID2Name ) H
+	Where Not Exists(Select * From IT15_ObjectsM OM Where OM.ITObjectName = H.N Collate Database_Default) And  ISNULL(H.N,'''') <> ''''
+	If @M Is Not Null Raiserror(''Şu nesneler olmadığı için veri işlemleri eklenemedi. '',16,1, @M)
+
+
+	'
+End]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
