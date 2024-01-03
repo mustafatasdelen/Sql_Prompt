@@ -1,0 +1,6 @@
+{
+  "id": "b400e459-f046-4749-b6b3-38c5b230a5de",
+  "prefix": "snp_GorunumInceleme",
+  "description": "",
+  "body": "Select CONVERT(Varchar(max),OV.Layout) From IT15_ObjectsVariant OV Where OV.ITObjectID = 11713"
+}
