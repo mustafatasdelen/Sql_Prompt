@@ -1,0 +1,6 @@
+{
+  "id": "9daac9d9-dbe6-4893-9d11-a3a6649ee5d1",
+  "prefix": "snp_RaiseChar13",
+  "description": "",
+  "body": "Declare @Msj1 Varchar(1000)\r\nSet @Msj1 = CONCAT(' Acikalama...', CHAR(13), '@Param1: ', @Param1, CHAR(13), '@Param2: ', @Param2)\r\nRaiserror('%s', 16, 1, @Msj1)"
+}
