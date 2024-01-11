@@ -2,7 +2,7 @@
   "id": "477c7448-483c-42e6-ad69-ec6ba07c005a",
   "prefix": "snp_Trig_InfOfDel",
   "description": "",
-  "body": "CREATE Trigger dbo.$TabloAdi$_Insert  ON [dbo].[$TabloAdi$]\r\nFOR Instead Of Delete\r\nAS\r\n\t/* Yazan  : $USER$\r\n\t\tTarih : $DATE$\r\n\t*/\r\nSET NOCOUNT ON\r\nBEGIN\r\n\tBEGIN TRY\r\n\tDeclare \r\n\t/* Cursor Variables*/\r\n\tDeclare c$TabloAdi$_Insert Cursor For\r\n\tSelect \r\n\tFrom\tinserted i\r\n\tOpen c$TabloAdi$_Insert\r\n\tFetch Next From c$TabloAdi$_Insert Into\r\n\tWhile @@Fetch_Status=0 Begin\r\n\t\r\n\t\tDelete $TabloAdi$ Where id = @id\r\n\r\n\t\tFetch Next From c$TabloAdi$_Insert Into\r\n\tEnd\r\n\tClose c$TabloAdi$_Insert\r\n\tDeallocate c$TabloAdi$_Insert\r\n\tEND TRY\r\n\tBEGIN CATCH\r\n\t\tDeclare @ITObjectName nvarchar(126)\r\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\r\n\t\tExecute SP15_GenerateError @ITObjectName\r\n\tEND CATCH\r\nEND",
+  "body": "CREATE Trigger dbo.$TabloAdi$_Insert  ON [dbo].[$TabloAdi$]\r\nFOR Instead Of Delete\r\nAS\r\n\t/* Yazan  : $USER$\r\n\t\tTarih : $DATE$\r\n\t*/\r\nSET NOCOUNT ON\r\nBEGIN\r\n\tBEGIN TRY\r\n\tDeclare \r\n\t/* Cursor Variables*/\r\n\tDeclare c$TabloAdi$_Insert Cursor For\r\n\tSelect \r\n\tFrom\tDeleted d\r\n\tOpen c$TabloAdi$_Insert\r\n\tFetch Next From c$TabloAdi$_Insert Into\r\n\tWhile @@Fetch_Status=0 Begin\r\n\t\r\n\t\tDelete $TabloAdi$ Where id = @id\r\n\r\n\t\tFetch Next From c$TabloAdi$_Insert Into\r\n\tEnd\r\n\tClose c$TabloAdi$_Insert\r\n\tDeallocate c$TabloAdi$_Insert\r\n\tEND TRY\r\n\tBEGIN CATCH\r\n\t\tDeclare @ITObjectName nvarchar(126)\r\n\t\tSet @ITObjectName = OBJECT_NAME (@@PROCID)\r\n\t\tExecute SP15_GenerateError @ITObjectName\r\n\tEND CATCH\r\nEND",
   "placeholders": [
     {
       "name": "TabloAdi",
