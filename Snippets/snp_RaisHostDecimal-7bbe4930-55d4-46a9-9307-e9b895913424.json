@@ -1,0 +1,6 @@
+{
+  "id": "7bbe4930-55d4-46a9-9307-e9b895913424",
+  "prefix": "snp_RaisHostDecimal",
+  "description": "",
+  "body": "Declare @xVarchar Varchar(18) = CONVERT(Varchar(18),@$CURSOR$)\r\n\r\nIf 'GNC-NB-2204' = dbo.ITHostName() Begin \r\n\tRaiserror('<%s>',16,1, @xVarchar) \r\nEnd"
+}
