@@ -2,5 +2,5 @@
   "id": "f0f6448a-9465-4edd-9cc8-40911ab84958",
   "prefix": "cursor",
   "description": "",
-  "body": "Declare @p INT\r\nDeclare cName Cursor Local For\r\n\r\nSelect * From Table\r\n\r\nOpen cName\r\nFetch Next From cName Into @p\r\nWhile @@FETCH_STATUS=0 Begin\r\n    \r\n\t--yapılacak işlem yazılır\r\n    Exec dbo.PSP04_UTSiparisKapat @UTSiparisDID = @p\r\n\r\n    Fetch Next From cName Into @p\r\nEnd\r\nClose cName\r\nDeallocate cName"
+  "body": "Declare @p INT\r\nDeclare cName Cursor Local For\r\n\r\nSelect * From Table\r\n\r\nOpen cName\r\nFetch Next From cName Into @p\r\nWhile @@FETCH_STATUS=0 Begin\r\n    \r\n\t--yapılacak işlem yazılır\r\n    Exec sp @p = @p\r\n\r\n    Fetch Next From cName Into @p\r\nEnd\r\nClose cName\r\nDeallocate cName"
 }
