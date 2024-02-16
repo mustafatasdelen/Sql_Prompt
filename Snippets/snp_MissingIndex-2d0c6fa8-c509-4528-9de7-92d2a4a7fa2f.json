@@ -1,0 +1,6 @@
+{
+  "id": "2d0c6fa8-c509-4528-9de7-92d2a4a7fa2f",
+  "prefix": "snp_MissingIndex",
+  "description": "",
+  "body": "Select  index_handle, database_id, object_id, equality_columns, inequality_columns, included_columns, statement\r\nFrom    sys.dm_db_missing_index_details Where statement Like '%BOYA_BTMZ%'"
+}
