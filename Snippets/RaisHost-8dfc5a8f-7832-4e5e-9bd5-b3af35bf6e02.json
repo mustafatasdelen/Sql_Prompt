@@ -2,5 +2,5 @@
   "id": "8dfc5a8f-7832-4e5e-9bd5-b3af35bf6e02",
   "prefix": "RaisHost",
   "description": "",
-  "body": "\tIf 'GNC-NB-2203' = dbo.ITHostName() Begin \r\n\t\t\tRaiserror('xx',16,1)\r\n\t\tEND"
+  "body": "If '$MACHINE$' = dbo.ITHostName() Begin \r\n\t\t\tRaiserror('xx',16,1)\r\n\t\tEND"
 }
