@@ -1,0 +1,6 @@
+{
+  "id": "b342b999-27d0-4067-8f88-df507047eea5",
+  "prefix": "GA_Deneme",
+  "description": "",
+  "body": "REATE PROC PSP40_KartelaKumasGirisCikis_SiparisEkle_Aft\r\n(@SPLeoFuarSiparisMID varchar (50), \r\n)\r\nAS\r\nBEGIN\r\nBEGIN TRY\r\n\tDeclare @PersonelID int, @ActiveFirmaID int, @UrunTID int, @UrunID int, @StoktipID int, @AmbardaYok tinyint, @StokAmbarID int, @FirmaID int, \r\n\t@FisTurID int, @AmbarID int, @FisID int, @SeriID int, @DepoCikisID int, @RaporID int, @SevkiyatFisTurID int, @msj varchar(30),@LEoFuarSiparisMID int,\r\n\t@SiparisDe"
+}
