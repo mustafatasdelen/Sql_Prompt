@@ -1,0 +1,6 @@
+{
+  "id": "f5c8aeda-de6e-43e9-a4c0-ff9a07039129",
+  "prefix": "MO_Deneme",
+  "description": "",
+  "body": "BEGIN TRY\r\n\tDECLARE @IsYeniKalite TINYINT, @IsOtomatikKod TINYINT, @NumuneKodPrefix varchar(20), @NumuneSayacCount INT, @NumuneSayac INT, @LastSayacNo INT\r\n\tSELECT @IsYeniKalite = IsYeniKalite , @LastSayacNo = NumuneSayac,@NumuneKodPrefix = NumuneKodPrefix, @NumuneSayacCount = NumuneSayacCount, @IsOtomatikKod = IsOtomatikKod \r\n\tFROM IT01_NumuneTalepNeden\tWHERE NumuneTalepNedenID = @SPNumuneTalepNedenID"
+}
