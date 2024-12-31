@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "id": "ea0f0c62-436f-4d9e-a348-492508d65270",
+    "name": "LEO_TSQL_CODE_STYLE"
+  },
+  "whitespace": {
+    "wrapLinesLongerThan": 160,
+    "newLines": {
+      "preserveExistingEmptyLinesAfterBatchSeparator": false,
+      "emptyLinesBetweenStatements": 0
+    }
+  },
+  "lists": {
+    "placeSubsequentItemsOnNewLines": "never",
+    "alignItemsToTabStops": true,
+    "alignComments": true
+  },
+  "parentheses": {
+    "parenthesisStyle": "expandedSplit",
+    "indentParenthesesContents": true,
+    "collapseShortParenthesisContents": true,
+    "collapseParenthesesShorterThan": 160
+  },
+  "casing": {
+    "reservedKeywords": "upperCamelCase",
+    "builtInFunctions": "uppercase",
+    "builtInDataTypes": "upperCamelCase",
+    "useObjectDefinitionCase": true
+  },
+  "dml": {
+    "collapseShortStatements": true,
+    "collapseStatementsShorterThan": 120,
+    "collapseShortSubqueries": true,
+    "collapseSubqueriesShorterThan": 120
+  },
+  "ddl": {
+    "indentParenthesesContents": true,
+    "placeConstraintColumnsOnNewLines": "ifLongerOrMultipleColumns",
+    "placeFirstProcedureParameterOnNewLine": "always",
+    "collapseShortStatements": true,
+    "collapseStatementsShorterThan": 120
+  },
+  "controlFlow": {
+    "placeBeginAndEndOnNewLine": false,
+    "collapseStatementsShorterThan": 78
+  },
+  "cte": {
+    "parenthesisStyle": "expandedSplit",
+    "indentContents": true,
+    "placeAsOnNewLine": false
+  },
+  "variables": {
+    "alignDataTypesAndValues": false,
+    "placeAssignedValueOnNewLineIfLongerThanMaxLineLength": false,
+    "placeEqualsSignOnNewLine": true
+  },
+  "joinStatements": {
+    "join": {
+      "keywordAlignment": "toTable",
+      "indentJoinTable": false
+    },
+    "on": {
+      "placeOnNewLine": false,
+      "keywordAlignment": "indented",
+      "conditionAlignment": "toInner"
+    }
+  },
+  "insertStatements": {
+    "columns": {
+      "parenthesisStyle": "compactSimple",
+      "indentContents": false,
+      "placeSubsequentColumnsOnNewLines": "never"
+    },
+    "values": {
+      "parenthesisStyle": "compactSimple"
+    }
+  },
+  "functionCalls": {
+    "placeArgumentsOnNewLines": "never"
+  },
+  "caseExpressions": {
+    "placeExpressionOnNewLine": false,
+    "placeFirstWhenOnNewLine": "never",
+    "whenAlignment": "toFirstItem",
+    "placeElseOnNewLine": false,
+    "placeEndOnNewLine": false,
+    "collapseShortCaseExpressions": true,
+    "collapseCaseExpressionsShorterThan": 100
+  },
+  "operators": {
+    "andOr": {
+      "placeOnNewLine": "ifLongerThanMaxLineLength",
+      "alignment": "toFirstListItem"
+    },
+    "in": {
+      "placeFirstValueOnNewLine": "never",
+      "placeSubsequentValuesOnNewLines": "never"
+    }
+  }
+}
